@@ -1,0 +1,71 @@
+:root {
+    --white: white;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: #3f403f;
+}
+
+/* -------------------------- NAV ------------------------------ */
+
+#content {
+    width: 100vw;
+    height: 100vh;
+}
+
+#title-text {
+    font-size: 3rem;
+    color: var(--white);
+}
+
+h2 {
+    color: var(--white);
+    margin-top: 1rem;
+}
+
+svg {
+    color: var(--white);
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+#hamburger-icon {
+    border: none;
+}
+
+.svg-icons {
+    margin-left: 0.8rem;
+}
+
+.nav-link {
+    border: none;
+    background: #3f403f;
+    margin-left: 0.2rem;
+    display: inline;
+}
+
+
+/* ----------------------------- INBOX ------------------------------- */
+span {
+    color: var(--white);
+}
+
+#inbox {
+    margin-left: 2.5rem;
+    margin-top: 1.5rem;
+    font-size: 2rem;
+}
+
+#add-task {
+    border: none;
+    margin-left: 2.7rem;
+    margin-top: 0.8rem;
+}
+
+.hide-display {
+    display: none;
+}
