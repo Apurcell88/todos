@@ -60,7 +60,7 @@ span {
     font-size: 2rem;
 }
 
-#add-task {
+#add-task-btn {
     border: none;
     margin-left: 2.7rem;
     margin-top: 0.8rem;
@@ -68,4 +68,8 @@ span {
 
 .hide-display {
     display: none;
+}
+
+.show-display-block {
+    display: block;
 }

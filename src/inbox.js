@@ -1,5 +1,9 @@
-function yay() {
-    alert('yay');
+import addTaskBtn from "./index.js";
+const taskPopup = document.querySelector('#add-task-popup');
+
+function loadInboxPopup() {
+    addTaskBtn.classList.add('hide-display');
+    taskPopup.classList.add('show-display-block');
 }
 
-export default yay;
+export default loadInboxPopup;
