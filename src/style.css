@@ -15,6 +15,11 @@
 #content {
     width: 100vw;
     height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: center; */
 }
 
 #title-text {
@@ -60,16 +65,74 @@ span {
     font-size: 2rem;
 }
 
+#add-task-popup {
+    width: 100vw;
+    height: 20vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto;
+    /* border: 2px white solid; */
+}
+
 #add-task-btn {
     border: none;
     margin-left: 2.7rem;
     margin-top: 0.8rem;
 }
 
+#todo-to-add-text {
+    width: 80%;
+    height: 40%;
+    border: none;
+    border-radius: 5px;
+    background-color: #212529;
+    color: var(--white);
+    text-align: center;
+    margin-top: 1rem;
+    outline: none;
+}
+
+.add-cancel-container {
+    width: 80%;
+    height: 20vh;
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+}
+
+.add-cancel-btn {
+    width: 8.5rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    border: none;
+    color: var(--white);
+}
+
+#add-btn {
+    background: rgba(166, 86, 232, 0.3);
+    transition: 0.3s;
+    
+}
+
+#add-btn:hover {
+    background: rgb(166, 86, 232);
+}
+
+#cancel-btn {
+    background: rgba(232, 86, 130, 0.3);
+    transition: 0.3s;
+}
+
+#cancel-btn:hover {
+    background: rgb(232, 86, 130);
+}
+
 .hide-display {
     display: none;
 }
 
-.show-display-block {
-    display: block;
+.show-display-flex {
+    display: flex;
 }
