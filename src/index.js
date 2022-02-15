@@ -1,19 +1,27 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
-import { loadInboxPopup, inboxTodos, todos } from './inbox.js';
+import { toggleInboxPopup, inboxTodos, todos, title, description, priority } from './inbox.js';
 
 const addTaskBtn = document.querySelector('#add-task-btn');
 const addTodoBtn = document.querySelector('#add-btn');
+const cancelTodoBtn = document.querySelector('#cancel-btn');
 
-addTaskBtn.addEventListener('click', (e) => {
-    loadInboxPopup();
-});
+addTaskBtn.addEventListener('click', toggleInboxPopup
+    
+);
 
-addTodoBtn.addEventListener('click', (e) => {
+addTodoBtn.addEventListener('click', () => {
     const todo = inboxTodos();
     todo.createTodo();
-    console.log(todo);
-    // console.log(todos);
-})
+    console.log(todos);
+    toggleInboxPopup();
+    title.value = '';
+    description.value = '';
+    priority.value = '';
+});
+
+cancelTodoBtn.addEventListener('click', () => {
+    toggleInboxPopup();
+});
 
 export default addTaskBtn;

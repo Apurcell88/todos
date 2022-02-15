@@ -1,31 +1,32 @@
 import addTaskBtn from "./index.js";
+import { v4 as uuidv4 } from 'uuid';
 
-let todos = [];
-// const title = document.querySelector('#todo-to-add-text');
+export const title = document.querySelector('#todo-to-add-text');
+export const description = document.querySelector('[data-description]');
+export const priority = document.querySelector('[data-priority]');
 
-export function loadInboxPopup() {
+export let todos = [];
+
+export function toggleInboxPopup() {
     const taskPopup = document.querySelector('#add-task-popup');
-    addTaskBtn.classList.add('hide-display');
-    taskPopup.classList.add('show-display-flex');
+    addTaskBtn.classList.toggle('hide-display');
+    taskPopup.classList.toggle('show-display-flex');
 }
 
 // Factory function in charge of inbox todos including creation
 export function inboxTodos() {
-    const title = document.querySelector('#todo-to-add-text');
-    const description = document.querySelector('[data-description]');
-    const priority = document.querySelector('[data-priority]');
-
     return {
         createTodo () {
             todos.push({
                 title: title.value,
                 description: description.value,
                 priority: priority.value,
-                // id: '',
+                id: uuidv4(),
             });
             return todos;
+        },
+        deleteTodo () {
+
         }
     }
 }
-
-export default todos;
