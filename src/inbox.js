@@ -2,7 +2,6 @@ import addTaskBtn from "./index.js";
 import { v4 as uuidv4 } from 'uuid';
 
 export const title = document.querySelector('#todo-to-add-text');
-export const description = document.querySelector('[data-description]');
 export const priority = document.querySelector('[data-priority]');
 
 export let todos = [];
@@ -19,7 +18,6 @@ export function inboxTodos() {
         createTodo () {
             todos.push({
                 title: title.value,
-                description: description.value,
                 priority: priority.value,
                 id: uuidv4(),
             });

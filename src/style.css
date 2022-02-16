@@ -10,6 +10,30 @@
     background: #3f403f;
 }
 
+span {
+    color: var(--white);
+}
+
+p {
+    color: var(--white);
+}
+
+.hide-display {
+    display: none;
+}
+
+.show-display-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.inline {
+    display: inline;
+}
+
 /* -------------------------- NAV ------------------------------ */
 
 #content {
@@ -61,10 +85,6 @@ svg {
 }
 
 /* ----------------------------- INBOX ------------------------------- */
-span {
-    color: var(--white);
-}
-
 #inbox {
     margin-left: 2.5rem;
     margin-top: 1.5rem;
@@ -133,12 +153,4 @@ span {
 
 #cancel-btn:hover {
     background: rgb(232, 86, 130);
-}
-
-.hide-display {
-    display: none;
-}
-
-.show-display-flex {
-    display: flex;
 }
