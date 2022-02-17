@@ -1,5 +1,6 @@
 :root {
     --white: white;
+    --purple: rgb(166, 86, 232);
 }
 
 * {
@@ -30,10 +31,6 @@ p {
     flex-direction: column;
 }
 
-.margin-right {
-    margin-right: 0.5rem;
-}
-
 /* -------------------------- NAV ------------------------------ */
 
 #content {
@@ -58,7 +55,7 @@ h2 {
 }
 
 svg {
-    color: var(--white);
+    color: var(--purple);
     height: 2.5rem;
     width: 2.5rem; 
 }
@@ -105,6 +102,11 @@ svg {
     border: none;
     margin-left: 2.7rem;
     margin-top: 0.8rem;
+    color: var(--white);
+}
+
+#add-task-btn svg {
+    color: var(--purple);
 }
 
 .input-style {
@@ -143,7 +145,7 @@ svg {
 }
 
 #add-btn:hover {
-    background: rgb(166, 86, 232);
+    background: var(--purple);
 }
 
 #cancel-btn {
@@ -159,4 +161,13 @@ svg {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* -------------------------- FORMATTING GENERATED TODOS FROM JS ------------------------- */
+.margin-right {
+    margin-right: 0.5rem;
+}
+
+.font-size {
+    font-size: 1.5rem;
 }
