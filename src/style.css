@@ -80,7 +80,6 @@ svg {
     height: 1.5rem;
     margin: 0 1rem;
 }
-
 /* ----------------------------- INBOX ------------------------------- */
 #inbox {
     margin-left: 2.5rem;
@@ -160,14 +159,37 @@ svg {
 #todos-display-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* flex-wrap: wrap; */
 }
 
-/* -------------------------- FORMATTING GENERATED TODOS FROM JS ------------------------- */
-.margin-right {
+/* -------------------------- JS DUE DATE STYLING ------------------------------- */
+.due-date {
+    color: var(--purple);
+    /* width: 8rem; */
+}
+
+/* -------------------------- EDITING GENERATED TODOS FROM JS ------------------------- */
+.completed-todo-checkbox {
     margin-right: 0.5rem;
+    margin-left: 2.5rem;
+    font-size: 1.5rem;
 }
 
-.font-size {
-    font-size: 1.5rem;
+.due-date {
+    margin-left: 2.5rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+    display: block;
+}
+
+.red {
+    color: #e32222;
+}
+
+.yellow {
+    color: #ebe71e;
+}
+
+.green {
+    color: #25eb1e;
 }

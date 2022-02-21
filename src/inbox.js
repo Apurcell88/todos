@@ -14,16 +14,20 @@ export function toggleInboxPopup() {
 
 // Factory function in charge of inbox todos including creation
 export function inboxTodos() {
+    // let todo = {};
     return {
         createTodo () {
             todos.push({
                 title: title.value,
-                priority: priority.value,
+                priority: priority.value.toLowerCase(),
                 id: uuidv4(),
             });
             return todos;
         },
         deleteTodo () {
+            
+        },
+        editTodo() {
 
         }
     }

@@ -15,7 +15,7 @@ addTodoBtn.addEventListener('click', () => {
     todosContainer.textContent = '';
     const todo = inboxTodos();
     todo.createTodo();
-    console.log(todos);
+    // todo.addClass();
     toggleInboxPopup();
     displayTodo(todos);
     title.value = '';
