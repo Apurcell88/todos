@@ -169,10 +169,10 @@ svg {
 }
 
 /* -------------------------- EDITING GENERATED TODOS FROM JS ------------------------- */
-.completed-todo-checkbox {
+.todo-el {
     margin-right: 0.5rem;
     margin-left: 2.5rem;
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
 }
 
 .due-date {

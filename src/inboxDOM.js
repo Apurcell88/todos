@@ -1,16 +1,18 @@
+
 export const todosContainer = document.querySelector('#todos-display-container');
 
 export function displayTodo(todos) {
     todos.forEach((todo) => {
         const individualTodoContainer = document.createElement('div');
 
-        const completedTodoCheckbox = document.createElement('input');
-        completedTodoCheckbox.setAttribute('type', 'checkbox');
-        completedTodoCheckbox.classList.add('completed-todo-checkbox');
-        individualTodoContainer.appendChild(completedTodoCheckbox);
+        // const completedTodoCheckbox = document.createElement('input');
+        // completedTodoCheckbox.setAttribute('type', 'checkbox');
+        // completedTodoCheckbox.classList.add('completed-todo-checkbox');
+        // individualTodoContainer.appendChild(completedTodoCheckbox);
 
-        const todoEl = document.createElement('span'); // make into button so when clicked the text can be edited
+        const todoEl = document.createElement('span');
         todoEl.textContent = `${todo.title} Priority: ${todo.priority}`;
+        todoEl.classList.add('todo-el');
         if (todo.priority === 'high') {
             todoEl.classList.add('red')
         }
