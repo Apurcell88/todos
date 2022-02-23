@@ -182,6 +182,10 @@ svg {
     display: block;
 }
 
+.mark-complete {
+    margin-left: 2.5rem;
+}
+
 .red {
     color: #e32222;
 }

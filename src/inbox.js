@@ -1,4 +1,4 @@
-import { addTaskBtn, deleteTodoBtn } from "./index.js";
+import { addTaskBtn } from "./index.js";
 import { v4 as uuidv4 } from 'uuid';
 
 export const title = document.querySelector('#todo-to-add-text');
@@ -6,10 +6,21 @@ export const priority = document.querySelector('[data-priority]');
 
 export let todos = [];
 
+export function toggleTodo(id) { // change to a delete function
+    console.log(todos);
+    let todo = todos.find((todo) => {
+        return todo.id === id;
+    });
+
+    if (todo !== undefined) {
+        todo.completed = !todo.completed;
+    }
+}
+
 export function toggleInboxPopup() {
     const taskPopup = document.querySelector('#add-task-popup');
     addTaskBtn.classList.toggle('hide-display');
-    deleteTodoBtn.classList.toggle('hide-display');
+    // deleteTodoBtn.classList.toggle('hide-display');
     taskPopup.classList.toggle('show-display-flex');
 }
 
@@ -22,21 +33,18 @@ export function inboxTodos() {
                 title: title.value,
                 priority: priority.value.toLowerCase(),
                 id: uuidv4(),
-                complete: false,
+                completed: false,
             });
             return todos;
         },
-        deleteTodo() {
-            todos.forEach((todo) => {
-            //     if (todo. ) {
-                console.log(todo);
-            //     }
+        removeTodo() {
+            const todoIndex = todos.findIndex((todo) => {
+                return todo.id === id;
             });
-            // todoToDel = todos.indexOf(id)
-            // todos.splice(index, 1);
+        
+            if (todoIndex > -1) {
+                todos.splice(todoIndex, 1);
+            }
         },
-        editTodo() {
-
-        }
     }
 }
