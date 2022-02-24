@@ -6,7 +6,6 @@ import { renderTodos, todosContainer } from './inboxDOM.js';
 export const addTaskBtn = document.querySelector('#add-task-btn');
 const addTodoBtn = document.querySelector('#add-btn');
 const cancelTodoBtn = document.querySelector('#cancel-btn');
-// export const deleteTodoBtn = document.querySelector('#delete-todo');
 
 addTaskBtn.addEventListener('click', toggleInboxPopup
     

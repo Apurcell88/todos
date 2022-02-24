@@ -39,6 +39,10 @@ export function generateTodoDOM(todo) {
     dueDate.classList.add('due-date');
     individualTodoContainer.appendChild(dueDate);
 
+    dueDate.addEventListener('change', (e) => {
+        dueDate.setAttribute('value', dueDate.value);
+        console.log(dueDate.value);
+    });
     return individualTodoContainer;
 }
 

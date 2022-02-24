@@ -180,10 +180,11 @@ svg {
     margin-top: 0.7rem;
     margin-bottom: 0.7rem;
     display: block;
+    border: none;
 }
 
 .mark-complete {
-    margin-left: 2.5rem;
+    margin-left: 0.5rem;
 }
 
 .red {
