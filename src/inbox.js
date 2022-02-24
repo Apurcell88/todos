@@ -6,14 +6,13 @@ export const priority = document.querySelector('[data-priority]');
 
 export let todos = [];
 
-export function toggleTodo(id) { // change to a delete function
-    console.log(todos);
-    let todo = todos.find((todo) => {
+export function deleteTodo(id) { // change to a delete function
+    const todoIndex = todos.findIndex((todo) => {
         return todo.id === id;
     });
 
-    if (todo !== undefined) {
-        todo.completed = !todo.completed;
+    if (todoIndex > -1) {
+        todos.splice(todoIndex, 1);
     }
 }
 
@@ -36,15 +35,6 @@ export function inboxTodos() {
                 completed: false,
             });
             return todos;
-        },
-        removeTodo() {
-            const todoIndex = todos.findIndex((todo) => {
-                return todo.id === id;
-            });
-        
-            if (todoIndex > -1) {
-                todos.splice(todoIndex, 1);
-            }
         },
     }
 }

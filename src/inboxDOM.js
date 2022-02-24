@@ -1,4 +1,4 @@
-import { todos, toggleTodo } from './inbox.js';
+import { todos, deleteTodo } from './inbox.js';
 
 export const todosContainer = document.querySelector('#todos-display-container');
 
@@ -31,7 +31,7 @@ export function generateTodoDOM(todo) {
     individualTodoContainer.appendChild(markComplete);
     markComplete.checked = todo.completed;
     markComplete.addEventListener('change', (e) => {
-        toggleTodo(todo.id); // change to a delete function
+        deleteTodo(todo.id);
         renderTodos(todos);
     });
 
