@@ -1,6 +1,10 @@
-import { todos, deleteTodo } from './inbox.js';
+import { todos, deleteTodo,  } from './inbox.js';
 
 export const todosContainer = document.querySelector('#todos-display-container');
+
+export function saveTodo() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
 
 export function generateTodoDOM(todo) {
     const individualTodoContainer = document.createElement('div');
@@ -32,13 +36,13 @@ export function generateTodoDOM(todo) {
     markComplete.checked = todo.completed;
     markComplete.addEventListener('change', (e) => {
         deleteTodo(todo.id);
+        saveTodo();
         renderTodos(todos);
     });
 
     dueDate.setAttribute('type', 'date');
     dueDate.classList.add('due-date');
     individualTodoContainer.appendChild(dueDate);
-
     dueDate.addEventListener('change', (e) => {
         dueDate.setAttribute('value', dueDate.value);
         console.log(dueDate.value);

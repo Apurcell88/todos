@@ -1,12 +1,12 @@
-import { addTaskBtn } from "./index.js";
+import { addTaskBtn, getSavedInboxTodos } from "./index.js";
 import { v4 as uuidv4 } from 'uuid';
 
 export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
 
-export let todos = [];
+export let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-export function deleteTodo(id) { // change to a delete function
+export function deleteTodo(id) {
     const todoIndex = todos.findIndex((todo) => {
         return todo.id === id;
     });
