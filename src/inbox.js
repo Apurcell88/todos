@@ -1,10 +1,13 @@
-import { addTaskBtn, getSavedInboxTodos } from "./index.js";
+import { addTaskBtn } from "./index.js";
+import { renderTodos } from "./inboxDOM.js";
 import { v4 as uuidv4 } from 'uuid';
 
 export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
 
-export let todos = JSON.parse(localStorage.getItem('todos')) || [];
+export let todos = getSavedTodos();
+
+renderTodos(todos);
 
 export function deleteTodo(id) {
     const todoIndex = todos.findIndex((todo) => {
@@ -15,6 +18,16 @@ export function deleteTodo(id) {
         todos.splice(todoIndex, 1);
     }
 }
+
+function getSavedTodos() {
+    const todosJSON = localStorage.getItem('todos');
+
+    if (todosJSON !== null) {
+        return JSON.parse(todosJSON);
+    } else {
+        return [];
+    }
+};
 
 export function toggleInboxPopup() {
     const taskPopup = document.querySelector('#add-task-popup');

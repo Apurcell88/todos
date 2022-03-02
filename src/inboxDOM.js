@@ -60,3 +60,5 @@ export function renderTodos(todos) {
         todosContainer.appendChild(generateTodoDOM(todo));
     });
 };
+
+// renderTodos(todos);
