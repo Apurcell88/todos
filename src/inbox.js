@@ -46,6 +46,7 @@ export function inboxTodos() {
                 priority: priority.value.toLowerCase(),
                 id: uuidv4(),
                 completed: false,
+                date: '2022-03-04',
             });
             return todos;
         },

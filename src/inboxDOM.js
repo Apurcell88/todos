@@ -1,9 +1,21 @@
 import { todos, deleteTodo,  } from './inbox.js';
+import { format } from 'date-fns';
 
 export const todosContainer = document.querySelector('#todos-display-container');
 
 export function saveTodo() {
     localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function saveDate(e) {
+    localStorage.setItem('saveValue', JSON.stringify(e.target.value));
+}
+
+function loadDate() {
+    const dateJSON = localStorage.getItem('saveValue');
+
+    return JSON.parse(dateJSON);
+    
 }
 
 export function generateTodoDOM(todo) {
@@ -44,9 +56,11 @@ export function generateTodoDOM(todo) {
     dueDate.classList.add('due-date');
     individualTodoContainer.appendChild(dueDate);
     dueDate.addEventListener('change', (e) => {
-        dueDate.setAttribute('value', dueDate.value);
+        saveDate(e);
+        dueDate.setAttribute('value', loadDate());
         console.log(dueDate.value);
     });
+
     return individualTodoContainer;
 }
 
@@ -60,5 +74,3 @@ export function renderTodos(todos) {
         todosContainer.appendChild(generateTodoDOM(todo));
     });
 };
-
-// renderTodos(todos);
