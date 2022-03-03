@@ -7,15 +7,19 @@ export function saveTodo() {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-function saveDate(e) {
-    localStorage.setItem('saveValue', JSON.stringify(e.target.value));
+function saveDate(dueDate) {
+    localStorage.setItem('saveValue', JSON.stringify(dueDate.value));
 }
 
 function loadDate() {
-    const dateJSON = localStorage.getItem('saveValue');
+    const JSONdate = localStorage.getItem('saveValue');
 
-    return JSON.parse(dateJSON);
-    
+    if (JSONdate !== undefined) {
+        return JSON.parse(JSONdate);
+    } else {
+        return '';
+    }
+    // return JSON.parse(localStorage.getItem('saveValue'));
 }
 
 export function generateTodoDOM(todo) {
@@ -55,11 +59,13 @@ export function generateTodoDOM(todo) {
     dueDate.setAttribute('type', 'date');
     dueDate.classList.add('due-date');
     individualTodoContainer.appendChild(dueDate);
+    dueDate.setAttribute('value', dueDate.value);
     dueDate.addEventListener('change', (e) => {
-        saveDate(e);
-        dueDate.setAttribute('value', loadDate());
-        console.log(dueDate.value);
+        saveDate(dueDate);
+        console.log(dueDate);
     });
+    dueDate.setAttribute('value', loadDate());
+    // renderTodos(todos);
 
     return individualTodoContainer;
 }
