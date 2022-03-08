@@ -2,33 +2,29 @@ import { todos, deleteTodo,  } from './inbox.js';
 import { format } from 'date-fns';
 
 export const todosContainer = document.querySelector('#todos-display-container');
-let dates = loadDate();
 
 export function saveTodo() {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
-// function saveDate(dueDate) {
-//     localStorage.setItem('saveValue', JSON.stringify(dueDate.value));
-// }
-
-function saveDate() {
-    localStorage.setItem('dates', JSON.stringify(dates));
-}
-
-function loadDate() {
-    // const JSONdate = localStorage.getItem('saveValue');
-    const JSONdate = localStorage.getItem('dates');
-
-    if (JSONdate !== null) {
-        return JSON.parse(JSONdate);
-    } else {
-        return [];
-    }
-    // return JSON.parse(localStorage.getItem('saveValue'));
-}
-
 export function generateTodoDOM(todo) {
+    // need each individual todo to have it's own localStorage. Will arguments solve this?
+    function saveDate() {
+        localStorage.setItem('dates', JSON.stringify(dates));
+    }
+    
+    function loadDate() {
+        const JSONdate = localStorage.getItem('dates');
+    
+        if (JSONdate !== null) {
+            return JSON.parse(JSONdate);
+        } else {
+            return [];
+        }
+    }
+
+    let dates = loadDate();
+
     const individualTodoContainer = document.createElement('div');
     const todoEl = document.createElement('span');
     const markComplete = document.createElement('input');
@@ -71,14 +67,12 @@ export function generateTodoDOM(todo) {
     dueDate.addEventListener('change', (e) => {
         todo.date = dueDate.value;
         dueDate.setAttribute('value', todo.date);
-        dates.push(todo.date);
-        // saveDate(dueDate);
+        dates.push(dueDate.value);
         saveDate();
         console.log(dueDate);
         console.log(dates);
     });
     dueDate.setAttribute('value', loadDate());
-    // renderTodos(todos);
 
     return individualTodoContainer;
 }
