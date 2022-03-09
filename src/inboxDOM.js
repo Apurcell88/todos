@@ -66,8 +66,8 @@ export function generateTodoDOM(todo) {
     // dueDate.setAttribute('value', todo.date);
     dueDate.addEventListener('change', (e) => {
         todo.date = dueDate.value;
-        dueDate.setAttribute('value', todo.date);
-        dates.push(dueDate.value);
+        // dueDate.setAttribute('value', todo.date);
+        dates.push(todo.date);
         saveDate();
         console.log(dueDate);
         console.log(dates);
