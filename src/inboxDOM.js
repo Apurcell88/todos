@@ -59,20 +59,17 @@ export function generateTodoDOM(todo) {
     });
 
     // set up date input
-    dueDate.setAttribute('type', 'date');
-    dueDate.classList.add('due-date');
-    individualTodoContainer.appendChild(dueDate);
-    // dueDate.setAttribute('value', dueDate.value);
-    // dueDate.setAttribute('value', todo.date);
-    dueDate.addEventListener('change', (e) => {
-        todo.date = dueDate.value;
-        // dueDate.setAttribute('value', todo.date);
-        dates.push(todo.date);
-        saveDate();
-        console.log(dueDate);
-        console.log(dates);
-    });
-    dueDate.setAttribute('value', loadDate());
+    // dueDate.setAttribute('type', 'date');
+    // dueDate.classList.add('due-date');
+    // individualTodoContainer.appendChild(dueDate);
+    // dueDate.addEventListener('change', (e) => {
+    //     todo.date = dueDate.value;
+    //     dates.push(todo.date);
+    //     saveDate();
+    //     console.log(dueDate);
+    //     console.log(dates);
+    // });
+    // dueDate.setAttribute('value', loadDate());
 
     return individualTodoContainer;
 }

@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
+export const date = document.querySelector('[data-date]'); // just added
 
 export let todos = getSavedTodos();
 
@@ -46,7 +47,7 @@ export function inboxTodos() {
                 priority: priority.value.toLowerCase(),
                 id: uuidv4(),
                 completed: false,
-                date: '',
+                date: '', // want the date to be the value of the date variable
             });
             return todos;
         },
