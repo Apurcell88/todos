@@ -8,28 +8,11 @@ export function saveTodo() {
 }
 
 export function generateTodoDOM(todo) {
-    // need each individual todo to have it's own localStorage. Will arguments solve this?
-    function saveDate() {
-        localStorage.setItem('dates', JSON.stringify(dates));
-    }
-    
-    function loadDate() {
-        const JSONdate = localStorage.getItem('dates');
-    
-        if (JSONdate !== null) {
-            return JSON.parse(JSONdate);
-        } else {
-            return [];
-        }
-    }
-
-    let dates = loadDate();
-
     const individualTodoContainer = document.createElement('div');
     const todoEl = document.createElement('span');
     const markComplete = document.createElement('input');
     const completedText = document.createElement('span');
-    const dueDate = document.createElement('input');
+    const dateDue = document.createElement('p');
 
     todoEl.textContent = `${todo.title} Priority: ${todo.priority}`;
     todoEl.classList.add('todo-el');
@@ -58,18 +41,9 @@ export function generateTodoDOM(todo) {
         renderTodos(todos);
     });
 
-    // set up date input
-    // dueDate.setAttribute('type', 'date');
-    // dueDate.classList.add('due-date');
-    // individualTodoContainer.appendChild(dueDate);
-    // dueDate.addEventListener('change', (e) => {
-    //     todo.date = dueDate.value;
-    //     dates.push(todo.date);
-    //     saveDate();
-    //     console.log(dueDate);
-    //     console.log(dates);
-    // });
-    // dueDate.setAttribute('value', loadDate());
+    dateDue.textContent = `Due by ${todo.date}`
+    individualTodoContainer.appendChild(dateDue);
+    dateDue.classList.add('todo-el');
 
     return individualTodoContainer;
 }

@@ -47,7 +47,7 @@ export function inboxTodos() {
                 priority: priority.value.toLowerCase(),
                 id: uuidv4(),
                 completed: false,
-                date: '', // want the date to be the value of the date variable
+                date: date.value,
             });
             return todos;
         },
