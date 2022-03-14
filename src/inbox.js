@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
-export const date = document.querySelector('[data-date]'); // just added
+export const date = document.querySelector('[data-date]');
 
 export let todos = getSavedTodos();
 
@@ -30,10 +30,9 @@ function getSavedTodos() {
     }
 };
 
-export function toggleInboxPopup() {
-    const taskPopup = document.querySelector('#add-task-popup');
-    addTaskBtn.classList.toggle('hide-display');
-    // deleteTodoBtn.classList.toggle('hide-display');
+export function toggleInboxPopup(element, btn) {
+    const taskPopup = document.querySelector(element);
+    btn.classList.toggle('hide-display');
     taskPopup.classList.toggle('show-display-flex');
 }
 

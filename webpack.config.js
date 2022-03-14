@@ -8,6 +8,7 @@ module.exports = {
         index: './src/index.js',
         inbox: './src/inbox.js',
         inboxDOM: './src/inboxDOM.js',
+        addProject: './src/addProject.js',
     },
   output: {
       // filename: 'main.js',
