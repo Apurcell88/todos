@@ -6,6 +6,7 @@ import { renderTodos, todosContainer, saveTodo } from './inboxDOM.js';
 export const addTaskBtn = document.querySelector('#add-task-btn');
 const addTodoBtn = document.querySelector('#add-btn');
 const cancelTodoBtn = document.querySelector('#cancel-btn');
+const inboxNavBtn = document.querySelector('[data-inbox]');
 
 addTaskBtn.addEventListener('click', toggleInboxPopup
     
@@ -26,4 +27,8 @@ cancelTodoBtn.addEventListener('click', () => {
     const todo = inboxTodos()
     // todo.deleteTodo();
     toggleInboxPopup();
+});
+
+inboxNavBtn.addEventListener('click', (e) => {
+    renderTodos(todos);
 });
