@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="./inbox.bundle.js"></script>
     <script src="./inboxDOM.bundle.js"></script>
+    <script src="./addProject.bundle.js"></script>
 </head>
 <body>
     <div id="content">
@@ -45,13 +46,22 @@
                       </svg>This Week
                     </button>
                   </li>
+                  <h2>Projects</h2>
                   <li class="nav-item">
-                    <h2>Projects</h2>
                     <button data-add-project-btn class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                       </svg>Add Project</button>
                   </li>
                 </ul>
+              </div>
+              <div id="add-project-section">
+                <div class="hide-display add-popup" data-add-project-popup>
+                  <input class="input-style" data-add-project type="text" placeholder="Project to add">
+                  <div class="add-cancel-container">
+                    <button class="add-cancel-btn add-btn" data-add-project-btn>Add</button>
+                    <button class="add-cancel-btn cancel-btn" data-cancel-project-btn>Cancel</button>
+                  </div>
+                </div>
               </div>
             </div>
           </nav>
@@ -60,29 +70,23 @@
           <div id="inbox-section">
             <h2 id="inbox">Inbox</h2>
             <div id="todos-display-container"></div>
-            <button id="add-task-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <button data-toggle-task-btn id="add-task-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
             </svg>Add Task</button>
             <!-- <button id="delete-todo">Delete Todo</button> -->
-            <div class="hide-display" id="add-task-popup">
+            <div class="hide-display add-popup" data-task-popup>
               <input class="input-style" id="todo-to-add-text" type="text" placeholder="Todo to add">
               <input data-priority class="input-style" type="text" placeholder="Priority">
               <input type="date" class="input-style" data-date> <!--This was just added-->
               <div class="add-cancel-container">
-                <button id="add-btn" class="add-cancel-btn">Add</button>
-                <button id="cancel-btn" class="add-cancel-btn">Cancel</button>
+                <button data-add-todo-btn class="add-cancel-btn add-btn">Add</button>
+                <button data-cancel-todo-btn class="add-cancel-btn cancel-btn">Cancel</button>
               </div>
             </div>
           </div>
           
           <!-- ADD PROJECT SECTION -->
-          <div id="add-project-section">
-            <div class="hide-display" id="add-project-popup">
-              <input data-add-project type="text" placeholder="Project to add">
-              <button data-add-project-btn>Add</button>
-              <button data-cancel-project-btn>Cancel</button>
-            </div>
-          </div>
+          
 
     </div>
 

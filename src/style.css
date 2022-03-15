@@ -87,7 +87,7 @@ svg {
     font-size: 2rem;
 }
 
-#add-task-popup {
+.add-popup {
     width: 100vw;
     height: 20vh;
     flex-direction: column;
@@ -137,22 +137,21 @@ svg {
     color: var(--white);
 }
 
-#add-btn {
+.add-btn {
     background: rgba(166, 86, 232, 0.3);
     transition: 0.3s;
-    
 }
 
-#add-btn:hover {
+.add-btn:hover {
     background: var(--purple);
 }
 
-#cancel-btn {
+.cancel-btn {
     background: rgba(232, 86, 130, 0.3);
     transition: 0.3s;
 }
 
-#cancel-btn:hover {
+.cancel-btn:hover {
     background: rgb(232, 86, 130);
 }
 
