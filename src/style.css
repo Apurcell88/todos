@@ -81,7 +81,7 @@ svg {
     margin: 0 1rem;
 }
 /* ----------------------------- INBOX ------------------------------- */
-#inbox {
+.inbox {
     margin-left: 2.5rem;
     margin-top: 1.5rem;
     font-size: 2rem;

@@ -2,9 +2,10 @@ import { todos, deleteTodo,  } from './inbox.js';
 import { format } from 'date-fns';
 
 export const todosContainer = document.querySelector('#todos-display-container');
+export const inboxTitle = document.querySelector('[data-project-title-text]');
 
-export function saveTodo() {
-    localStorage.setItem('todos', JSON.stringify(todos));
+export function saveToLocalStorage(key, stringifyVar) {
+    localStorage.setItem(key, JSON.stringify(stringifyVar));
 }
 
 export function generateTodoDOM(todo) {
@@ -13,6 +14,8 @@ export function generateTodoDOM(todo) {
     const markComplete = document.createElement('input');
     const completedText = document.createElement('span');
     const dateDue = document.createElement('p');
+
+    inboxTitle.textContent = 'Inbox';
 
     todoEl.textContent = `${todo.title} Priority: ${todo.priority}`;
     todoEl.classList.add('todo-el');
@@ -37,7 +40,7 @@ export function generateTodoDOM(todo) {
     markComplete.checked = todo.completed;
     markComplete.addEventListener('change', (e) => {
         deleteTodo(todo.id);
-        saveTodo();
+        saveToLocalStorage('todos', todos);
         renderTodos(todos);
     });
 

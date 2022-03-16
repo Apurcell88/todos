@@ -47,8 +47,9 @@
                     </button>
                   </li>
                   <h2>Projects</h2>
+                  <div data-projects-container></div>
                   <li class="nav-item">
-                    <button data-add-project-btn class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <button data-add-project-nav-btn class="nav-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                       </svg>Add Project</button>
                   </li>
@@ -56,7 +57,7 @@
               </div>
               <div id="add-project-section">
                 <div class="hide-display add-popup" data-add-project-popup>
-                  <input class="input-style" data-add-project type="text" placeholder="Project to add">
+                  <input class="input-style" data-input-project-title type="text" placeholder="Project to add">
                   <div class="add-cancel-container">
                     <button class="add-cancel-btn add-btn" data-add-project-btn>Add</button>
                     <button class="add-cancel-btn cancel-btn" data-cancel-project-btn>Cancel</button>
@@ -68,7 +69,7 @@
 
           <!-- INBOX SECTION -->
           <div id="inbox-section">
-            <h2 id="inbox">Inbox</h2>
+            <h2 data-project-title-text class="inbox"></h2>
             <div id="todos-display-container"></div>
             <button data-toggle-task-btn id="add-task-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>

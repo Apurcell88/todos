@@ -1,14 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import { todos, toggleInboxPopup, inboxTodos, title, priority } from './inbox.js';
-import { renderTodos, todosContainer, saveTodo } from './inboxDOM.js';
-import { addProjectNavBtn, addProject, cancelProject } from './addProject.js';
+import { renderTodos, todosContainer, saveToLocalStorage } from './inboxDOM.js';
+import { createProjects, addProjectBtn, projects, projectInput, addProjectNavBtn, cancelProject } from './addProject.js';
 
 export const addTaskBtn = document.querySelector('[data-toggle-task-btn]');
 const addTodoBtn = document.querySelector('[data-add-todo-btn]');
 const cancelTodoBtn = document.querySelector('[data-cancel-todo-btn]');
 const inboxNavBtn = document.querySelector('[data-inbox]');
 
+// Default inbox load
 addTaskBtn.addEventListener('click', (e) => {
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
 });
@@ -17,7 +18,7 @@ addTodoBtn.addEventListener('click', () => {
     todosContainer.textContent = '';
     const todo = inboxTodos();
     todo.createTodo();
-    saveTodo();
+    saveToLocalStorage('todos', todos);
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
     renderTodos(todos);
     title.value = '';
@@ -32,4 +33,14 @@ cancelTodoBtn.addEventListener('click', () => {
 
 inboxNavBtn.addEventListener('click', (e) => {
     renderTodos(todos);
+});
+
+
+// Adding projects
+addProjectBtn.addEventListener('click', (e) => {
+    const project = createProjects();
+    project.createProject();
+    saveToLocalStorage('projects', projects);
+    toggleInboxPopup('[data-add-project-popup]', addProjectNavBtn);
+    projectInput.value = '';
 });
