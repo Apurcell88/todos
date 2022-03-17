@@ -1,4 +1,5 @@
 import { toggleInboxPopup, getSavedStorage } from "./inbox";
+import { renderProjects } from "./addProjectDOM";
 
 export const addProjectNavBtn = document.querySelector('[data-add-project-nav-btn]');
 export const addProjectBtn = document.querySelector('[data-add-project-btn]');
@@ -6,6 +7,8 @@ const cancelProjectBtn = document.querySelector('[data-cancel-project-btn]');
 export const projectInput = document.querySelector('[data-input-project-title]');
 
 export let projects = getSavedStorage('projects');
+
+renderProjects(projects);
 
 // Factory function that creates projects
 export function createProjects() {

@@ -3,6 +3,7 @@ import './style.css';
 import { todos, toggleInboxPopup, inboxTodos, title, priority } from './inbox.js';
 import { renderTodos, todosContainer, saveToLocalStorage } from './inboxDOM.js';
 import { createProjects, addProjectBtn, projects, projectInput, addProjectNavBtn, cancelProject } from './addProject.js';
+import { renderProjects } from './addProjectDOM';
 
 export const addTaskBtn = document.querySelector('[data-toggle-task-btn]');
 const addTodoBtn = document.querySelector('[data-add-todo-btn]');
@@ -26,8 +27,6 @@ addTodoBtn.addEventListener('click', () => {
 });
 
 cancelTodoBtn.addEventListener('click', () => {
-    // const todo = inboxTodos()
-    // todo.deleteTodo();
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
 });
 
@@ -42,5 +41,6 @@ addProjectBtn.addEventListener('click', (e) => {
     project.createProject();
     saveToLocalStorage('projects', projects);
     toggleInboxPopup('[data-add-project-popup]', addProjectNavBtn);
+    renderProjects(projects);
     projectInput.value = '';
 });
