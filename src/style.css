@@ -220,3 +220,7 @@ svg {
     padding-bottom: 2rem;
     color: var(--purple);
 }
+
+.enter-project-button {
+    border: none;
+}

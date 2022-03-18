@@ -2,17 +2,19 @@ import { deleteItem } from "./inbox";
 import { projects } from "./addProject";
 import { saveToLocalStorage } from "./inboxDOM";
 
-const projectsContainer = document.querySelector('[data-projects-container]');
-
 export function generateProjectDOM(project) {
     const individualProjectContainer = document.createElement('div');
-    const projectEl = document.createElement('span');
+    const projectEl = document.createElement('button');
     const deleteProjectBtn = document.createElement('button');
 
     individualProjectContainer.classList.add('projects', 'show-display-flex', 'justify-content-space-between');
 
     projectEl.textContent = project.title;
     individualProjectContainer.appendChild(projectEl);
+    projectEl.classList.add('enter-project-button');
+    projectEl.addEventListener('click', (e) => {
+        alert('yay');
+    });
 
     deleteProjectBtn.textContent = 'X';
     individualProjectContainer.appendChild(deleteProjectBtn);
@@ -27,6 +29,8 @@ export function generateProjectDOM(project) {
 }
 
 export function renderProjects(projects) {
+    const projectsContainer = document.querySelector('[data-projects-container]');
+
     projectsContainer.innerHTML = '';
     projects.forEach((project) => {
         projectsContainer.appendChild(generateProjectDOM(project));
