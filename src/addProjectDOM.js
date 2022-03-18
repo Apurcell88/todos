@@ -5,10 +5,14 @@ export function generateProjectDOM(project) {
     const projectEl = document.createElement('span');
     const deleteProjectBtn = document.createElement('button');
 
+    individualProjectContainer.classList.add('projects', 'show-display-flex', 'justify-content-space-between');
+
     projectEl.textContent = project.title;
     individualProjectContainer.appendChild(projectEl);
 
-    deleteProjectBtn.textContent
+    deleteProjectBtn.textContent = 'X';
+    individualProjectContainer.appendChild(deleteProjectBtn);
+    deleteProjectBtn.classList.add('delete-project-btn');
 
     return individualProjectContainer;
 }

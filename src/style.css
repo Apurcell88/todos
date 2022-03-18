@@ -19,6 +19,10 @@ p {
     color: var(--white);
 }
 
+button {
+    color: var(--white);
+}
+
 .hide-display {
     display: none;
 }
@@ -29,6 +33,10 @@ p {
 
 .flex-column {
     flex-direction: column;
+}
+
+.justify-content-space-between {
+    justify-content: space-between;
 }
 
 /* -------------------------- NAV ------------------------------ */
@@ -167,7 +175,7 @@ svg {
     /* width: 8rem; */
 }
 
-/* -------------------------- EDITING GENERATED TODOS FROM JS ------------------------- */
+/* -------------------------- STYLING GENERATED TODOS FROM JS ------------------------- */
 .todo-el {
     margin-right: 0.5rem;
     margin-left: 2.5rem;
@@ -196,4 +204,19 @@ svg {
 
 .green {
     color: #25eb1e;
+}
+
+/* --------------- STYLING GENERATED PROJECT TITLES FROM JS ----------- */
+.projects {
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+
+.delete-project-btn {
+    width: 4rem;
+    height: 2rem;
+    font-size: 1rem;
+    border: none;
+    padding-bottom: 2rem;
+    color: var(--purple);
 }
