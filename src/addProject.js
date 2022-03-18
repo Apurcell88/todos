@@ -1,5 +1,6 @@
 import { toggleInboxPopup, getSavedStorage } from "./inbox";
 import { renderProjects } from "./addProjectDOM";
+import { v4 as uuidv4 } from 'uuid';
 
 export const addProjectNavBtn = document.querySelector('[data-add-project-nav-btn]');
 export const addProjectBtn = document.querySelector('[data-add-project-btn]');
@@ -16,6 +17,7 @@ export function createProjects() {
         createProject() {
             projects.push({
                 title: projectInput.value,
+                id: uuidv4(),
             });
         }
     }

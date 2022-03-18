@@ -10,13 +10,13 @@ export let todos = getSavedStorage('todos');
 
 renderTodos(todos);
 
-export function deleteTodo(id) {
-    const todoIndex = todos.findIndex((todo) => {
+export function deleteItem(id, array) {
+    const itemIndex = array.findIndex((todo) => {
         return todo.id === id;
     });
 
-    if (todoIndex > -1) {
-        todos.splice(todoIndex, 1);
+    if (itemIndex > -1) {
+        array.splice(itemIndex, 1);
     }
 }
 

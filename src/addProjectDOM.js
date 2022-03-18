@@ -1,3 +1,7 @@
+import { deleteItem } from "./inbox";
+import { projects } from "./addProject";
+import { saveToLocalStorage } from "./inboxDOM";
+
 const projectsContainer = document.querySelector('[data-projects-container]');
 
 export function generateProjectDOM(project) {
@@ -13,6 +17,11 @@ export function generateProjectDOM(project) {
     deleteProjectBtn.textContent = 'X';
     individualProjectContainer.appendChild(deleteProjectBtn);
     deleteProjectBtn.classList.add('delete-project-btn');
+    deleteProjectBtn.addEventListener('click', (e) => {
+        deleteItem(project.id, projects);
+        saveToLocalStorage('projects', projects);
+        renderProjects(projects);
+    });
 
     return individualProjectContainer;
 }

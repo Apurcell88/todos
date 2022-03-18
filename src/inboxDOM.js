@@ -1,4 +1,4 @@
-import { todos, deleteTodo,  } from './inbox.js';
+import { todos, deleteItem } from './inbox.js';
 import { format } from 'date-fns';
 
 export const todosContainer = document.querySelector('#todos-display-container');
@@ -39,7 +39,7 @@ export function generateTodoDOM(todo) {
     individualTodoContainer.appendChild(markComplete);
     markComplete.checked = todo.completed;
     markComplete.addEventListener('change', (e) => {
-        deleteTodo(todo.id);
+        deleteItem(todo.id, todos);
         saveToLocalStorage('todos', todos);
         renderTodos(todos);
     });
