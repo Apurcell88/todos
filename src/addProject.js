@@ -3,7 +3,6 @@ import { renderProjects } from "./addProjectDOM";
 import { v4 as uuidv4 } from 'uuid';
 
 export const addProjectNavBtn = document.querySelector('[data-add-project-nav-btn]');
-export const addProjectBtn = document.querySelector('[data-add-project-btn]');
 const cancelProjectBtn = document.querySelector('[data-cancel-project-btn]');
 export const projectInput = document.querySelector('[data-input-project-title]');
 

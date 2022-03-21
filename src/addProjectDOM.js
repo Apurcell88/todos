@@ -1,6 +1,8 @@
 import { deleteItem } from "./inbox";
 import { projects } from "./addProject";
-import { saveToLocalStorage } from "./inboxDOM";
+import { saveToLocalStorage, inboxTitle, renderTodos } from "./inboxDOM";
+
+// let projectTodos;
 
 export function generateProjectDOM(project) {
     const individualProjectContainer = document.createElement('div');
@@ -13,7 +15,9 @@ export function generateProjectDOM(project) {
     individualProjectContainer.appendChild(projectEl);
     projectEl.classList.add('enter-project-button');
     projectEl.addEventListener('click', (e) => {
-        alert('yay');
+        inboxTitle.textContent = project.title;
+        // have to change which local storage appears on screen
+        
     });
 
     deleteProjectBtn.textContent = 'X';
