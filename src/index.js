@@ -45,9 +45,5 @@ addProjectBtn.addEventListener('click', (e) => {
     toggleInboxPopup('[data-add-project-popup]', addProjectNavBtn);
     renderProjects(projects);
     projectInput.value = '';
-
-    // set up todos for the project
-    const todo = inboxTodos();
-    todo.createTodo();
-    // saveToLocalStorage(`'${todo.}'`)
+    console.log(projects);
 });

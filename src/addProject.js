@@ -16,6 +16,7 @@ export function createProjects() {
         createProject() {
             projects.push({
                 title: projectInput.value,
+                tasks: [],
                 id: uuidv4(),
             });
         }

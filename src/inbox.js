@@ -6,7 +6,8 @@ export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
 export const date = document.querySelector('[data-date]');
 
-export let todos = getSavedStorage('todos');
+// export let todos = getSavedStorage('todos');
+export let todos = {}
 
 renderTodos(todos);
 

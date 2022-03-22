@@ -41,7 +41,7 @@ export function generateTodoDOM(todo) {
     markComplete.addEventListener('change', (e) => {
         deleteItem(todo.id, todos);
         saveToLocalStorage('todos', todos);
-        renderTodos(todos);
+        renderTodos(todos, inbox);
     });
 
     dateDue.textContent = `Due by ${todo.date}`
