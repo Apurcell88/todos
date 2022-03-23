@@ -1,13 +1,13 @@
 import { addTaskBtn } from "./index.js";
 import { renderTodos } from "./inboxDOM.js";
+import { projects } from "./addProject.js";
 import { v4 as uuidv4 } from 'uuid';
 
 export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
 export const date = document.querySelector('[data-date]');
 
-// export let todos = getSavedStorage('todos');
-export let todos = {}
+export let todos = getSavedStorage('todos');
 
 renderTodos(todos);
 
@@ -39,17 +39,25 @@ export function toggleInboxPopup(element, btn) {
 
 // Factory function in charge of inbox todos including creation
 export function inboxTodos() {
-    // const todoToDel;
     return {
         createTodo() {
-            todos.push({
+            // todos.push({
+            //     title: title.value,
+            //     priority: priority.value.toLowerCase(),
+            //     id: uuidv4(),
+            //     completed: false,
+            //     date: date.value,
+            // });
+
+            // return todos;
+
+            return {
                 title: title.value,
                 priority: priority.value.toLowerCase(),
                 id: uuidv4(),
                 completed: false,
                 date: date.value,
-            });
-            return todos;
+            };
         },
     }
 }

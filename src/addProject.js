@@ -16,7 +16,7 @@ export function createProjects() {
         createProject() {
             projects.push({
                 title: projectInput.value,
-                tasks: [],
+                tasks: [], // want the todos in here
                 id: uuidv4(),
             });
         }

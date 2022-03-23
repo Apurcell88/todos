@@ -1,4 +1,5 @@
 import { todos, deleteItem } from './inbox.js';
+import { projects } from './addProject.js';
 import { format } from 'date-fns';
 
 export const todosContainer = document.querySelector('#todos-display-container');
@@ -8,6 +9,7 @@ export function saveToLocalStorage(key, stringifyVar) {
     localStorage.setItem(key, JSON.stringify(stringifyVar));
 }
 
+// this function needs to be reworked since todo array no longer exists?
 export function generateTodoDOM(todo) {
     const individualTodoContainer = document.createElement('div');
     const todoEl = document.createElement('span');
@@ -40,8 +42,8 @@ export function generateTodoDOM(todo) {
     markComplete.checked = todo.completed;
     markComplete.addEventListener('change', (e) => {
         deleteItem(todo.id, todos);
-        saveToLocalStorage('todos', todos);
-        renderTodos(todos, inbox);
+        // saveToLocalStorage('todos', todos);
+        renderTodos(projects);
     });
 
     dateDue.textContent = `Due by ${todo.date}`

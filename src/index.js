@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
-import { todos, toggleInboxPopup, inboxTodos, title, priority } from './inbox.js';
+import { todos, toggleInboxPopup, inboxTodos, title, priority, date } from './inbox.js';
 import { renderTodos, todosContainer, saveToLocalStorage } from './inboxDOM.js';
 import { createProjects, projects, projectInput, addProjectNavBtn, cancelProject } from './addProject.js';
 import { renderProjects } from './addProjectDOM';
@@ -19,12 +19,16 @@ addTaskBtn.addEventListener('click', (e) => {
 addTodoBtn.addEventListener('click', () => {
     todosContainer.textContent = '';
     const todo = inboxTodos();
-    todo.createTodo();
-    saveToLocalStorage('todos', todos);
+    // todo.createTodo();
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
-    renderTodos(todos);
+    renderTodos(projects);
+    projects.forEach((project) => {
+        project.tasks.push(todo.createTodo())
+        saveToLocalStorage('projects', projects);
+    });
     title.value = '';
     priority.value = '';
+    date.value = '';
 });
 
 cancelTodoBtn.addEventListener('click', () => {
