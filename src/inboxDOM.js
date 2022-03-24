@@ -1,6 +1,5 @@
-import { todos, deleteItem } from './inbox.js';
-import { projects } from './addProject.js';
-import { format } from 'date-fns';
+import { deleteItem } from './inbox.js';
+import { projects, projectInput } from './addProject.js';
 
 export const todosContainer = document.querySelector('#todos-display-container');
 export const inboxTitle = document.querySelector('[data-project-title-text]');
@@ -9,7 +8,7 @@ export function saveToLocalStorage(key, stringifyVar) {
     localStorage.setItem(key, JSON.stringify(stringifyVar));
 }
 
-// this function needs to be reworked since todo array no longer exists?
+// todos no longer exists. This has to be reworked so it works with the projects array?
 export function generateTodoDOM(todo) {
     const individualTodoContainer = document.createElement('div');
     const todoEl = document.createElement('span');
@@ -17,9 +16,9 @@ export function generateTodoDOM(todo) {
     const completedText = document.createElement('span');
     const dateDue = document.createElement('p');
 
-    inboxTitle.textContent = 'Inbox';
+    inboxTitle.textContent = projectInput.value;
 
-    todoEl.textContent = `${todo.title} Priority: ${todo.priority}`;
+    todoEl.textContent = `${todo.title} Priority: ${todo.priority}`; 
     todoEl.classList.add('todo-el');
     if (todo.priority === 'high') {
         todoEl.classList.add('red')
@@ -41,8 +40,8 @@ export function generateTodoDOM(todo) {
     individualTodoContainer.appendChild(markComplete);
     markComplete.checked = todo.completed;
     markComplete.addEventListener('change', (e) => {
-        deleteItem(todo.id, todos);
-        // saveToLocalStorage('todos', todos);
+        deleteItem(todo.id, projects);
+        saveToLocalStorage('projects', projects);
         renderTodos(projects);
     });
 

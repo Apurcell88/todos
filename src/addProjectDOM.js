@@ -1,6 +1,6 @@
 import { deleteItem } from "./inbox";
 import { projects } from "./addProject";
-import { saveToLocalStorage, inboxTitle, todosContainer, renderTodos } from "./inboxDOM";
+import { saveToLocalStorage, inboxTitle, todosContainer, renderTodos, generateTodoDOM } from "./inboxDOM";
 
 export function generateProjectDOM(project) {
     const individualProjectContainer = document.createElement('div');
@@ -26,6 +26,8 @@ export function generateProjectDOM(project) {
     individualProjectContainer.appendChild(deleteProjectBtn);
     deleteProjectBtn.classList.add('delete-project-btn');
     deleteProjectBtn.addEventListener('click', (e) => {
+        todosContainer.innerHTML = '';
+        inboxTitle.innerHTML = '';
         deleteItem(project.id, projects);
         saveToLocalStorage('projects', projects);
         renderProjects(projects);
@@ -43,15 +45,16 @@ export function renderProjects(projects) {
     });
 }
 
-// this function is purely for testing. Need to loop over each project's tasks and display
-function render(todos) {
+export function render(todos) {
     todosContainer.innerHTML = ''; 
-   const incompleteTodos = todos.forEach((todo) => { // change into a for loop
-        todo.tasks.forEach((task) => { // change into a for loop
-            return !task.completed;
-        })
-    });
-    
+    let incompleteTodos = [];
+
+    for (let i = 0; i <= todos.length - 1; i++) {
+        todos[i].tasks.forEach((task) => {
+             incompleteTodos.push(task);
+        });
+    }
+
     incompleteTodos.forEach((todo) => {
         todosContainer.appendChild(generateTodoDOM(todo));
     });

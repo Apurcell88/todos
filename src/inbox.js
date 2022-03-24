@@ -7,9 +7,7 @@ export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
 export const date = document.querySelector('[data-date]');
 
-export let todos = getSavedStorage('todos');
-
-renderTodos(todos);
+// renderTodos(projects); // argument changed from todos to projects since todos doesn't exist
 
 export function deleteItem(id, array) {
     const itemIndex = array.findIndex((todo) => {
@@ -38,19 +36,9 @@ export function toggleInboxPopup(element, btn) {
 }
 
 // Factory function in charge of inbox todos including creation
-export function inboxTodos() {
+export function Todos() {
     return {
         createTodo() {
-            // todos.push({
-            //     title: title.value,
-            //     priority: priority.value.toLowerCase(),
-            //     id: uuidv4(),
-            //     completed: false,
-            //     date: date.value,
-            // });
-
-            // return todos;
-
             return {
                 title: title.value,
                 priority: priority.value.toLowerCase(),

@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
-import { todos, toggleInboxPopup, inboxTodos, title, priority, date } from './inbox.js';
+import { toggleInboxPopup, Todos, title, priority, date } from './inbox.js';
 import { renderTodos, todosContainer, saveToLocalStorage } from './inboxDOM.js';
 import { createProjects, projects, projectInput, addProjectNavBtn, cancelProject } from './addProject.js';
-import { renderProjects } from './addProjectDOM';
+import { renderProjects, render } from './addProjectDOM';
 
 export const addTaskBtn = document.querySelector('[data-toggle-task-btn]');
 const addTodoBtn = document.querySelector('[data-add-todo-btn]');
@@ -16,16 +16,20 @@ addTaskBtn.addEventListener('click', (e) => {
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
 });
 
+// something might be off here?
 addTodoBtn.addEventListener('click', () => {
     todosContainer.textContent = '';
-    const todo = inboxTodos();
-    // todo.createTodo();
+    const todo = Todos();
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
-    renderTodos(projects);
+    // renderProjects(projects);
     projects.forEach((project) => {
         project.tasks.push(todo.createTodo())
         saveToLocalStorage('projects', projects);
     });
+    // renderTodos(projects);
+    renderTodos(projects);
+    render(projects);
+    // inboxTitle.textContent = projects.title;
     title.value = '';
     priority.value = '';
     date.value = '';
@@ -35,9 +39,9 @@ cancelTodoBtn.addEventListener('click', () => {
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
 });
 
-inboxNavBtn.addEventListener('click', (e) => {
-    renderTodos(todos);
-});
+// inboxNavBtn.addEventListener('click', (e) => {
+//     renderTodos(todos);
+// });
 
 
 // Adding projects
