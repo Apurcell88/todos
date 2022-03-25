@@ -16,7 +16,6 @@ addTaskBtn.addEventListener('click', (e) => {
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
 });
 
-// something might be off here?
 addTodoBtn.addEventListener('click', () => {
     todosContainer.textContent = '';
     const todo = Todos();
@@ -35,11 +34,6 @@ addTodoBtn.addEventListener('click', () => {
 cancelTodoBtn.addEventListener('click', () => {
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
 });
-
-// inboxNavBtn.addEventListener('click', (e) => {
-//     renderTodos(todos);
-// });
-
 
 // Adding projects
 addProjectBtn.addEventListener('click', (e) => {
