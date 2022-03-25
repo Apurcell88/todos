@@ -7,8 +7,7 @@ export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
 export const date = document.querySelector('[data-date]');
 
-// renderTodos(projects); // argument changed from todos to projects since todos doesn't exist
-
+// this function is now not working as intended. Why? Maybe because now the todos are imbedded inside of an object. Todos are also still an array though.
 export function deleteItem(id, array) {
     const itemIndex = array.findIndex((todo) => {
         return todo.id === id;

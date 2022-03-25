@@ -1,6 +1,6 @@
 import { deleteItem } from "./inbox";
 import { projects } from "./addProject";
-import { saveToLocalStorage, inboxTitle, todosContainer, renderTodos, generateTodoDOM } from "./inboxDOM";
+import { saveToLocalStorage, inboxTitle, todosContainer, generateTodoDOM } from "./inboxDOM";
 
 export function generateProjectDOM(project) {
     const individualProjectContainer = document.createElement('div');
@@ -14,7 +14,7 @@ export function generateProjectDOM(project) {
     projectEl.classList.add('enter-project-button');
     // below is more than likely wrong, but we can at least see some functionality
     projectEl.addEventListener('click', (e) => {
-        renderTodos(projects);
+        // renderTodos(projects);
         render(projects);
         inboxTitle.textContent = project.title;
         
