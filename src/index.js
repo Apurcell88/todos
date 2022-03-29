@@ -17,7 +17,7 @@ addTaskBtn.addEventListener('click', (e) => {
 });
 
 addTodoBtn.addEventListener('click', () => {
-    todosContainer.textContent = '';
+    // todosContainer.textContent = '';
     const todo = Todos();
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
     projects.forEach((project) => {
@@ -25,7 +25,12 @@ addTodoBtn.addEventListener('click', () => {
         saveToLocalStorage('projects', projects);
     });
     render(projects);
-    inboxTitle.textContent = projects[1].title; // not 100% right but on the right track. Need to figure out logic to determine which project is being clicked?
+    // keep an eye on the forEach loop below. Might do unwanted things down the line
+    projects.forEach((project) => {
+        if (inboxTitle.textContent !== project.title) {
+            inboxTitle.textContent = project.title
+        }
+    });
     title.value = '';
     priority.value = '';
     date.value = '';
@@ -43,6 +48,7 @@ addProjectBtn.addEventListener('click', (e) => {
     saveToLocalStorage('projects', projects);
     toggleInboxPopup('[data-add-project-popup]', addProjectNavBtn);
     renderProjects(projects);
-    projectInput.value = '';
+    inboxTitle.textContent = projectInput.value;
+    projectInput.value = ''; 
     console.log(projects);
 });

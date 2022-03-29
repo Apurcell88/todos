@@ -47,6 +47,7 @@ export function renderProjects(projects) {
 
 export function render(todos) {
     todosContainer.innerHTML = ''; 
+
     let incompleteTodos = [];
 
     for (let i = 0; i <= todos.length - 1; i++) {
