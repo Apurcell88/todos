@@ -14,8 +14,7 @@ export function generateProjectDOM(project) {
     projectEl.classList.add('enter-project-button');
     // below is more than likely wrong, but we can at least see some functionality
     projectEl.addEventListener('click', (e) => {
-        // renderTodos(projects);
-        render(projects);
+        // render(projects);
         inboxTitle.textContent = project.title;
         
 
@@ -46,7 +45,7 @@ export function renderProjects(projects) {
 }
 
 export function render(todos) {
-    todosContainer.innerHTML = ''; 
+    todosContainer.innerHTML = '';
 
     let incompleteTodos = [];
 

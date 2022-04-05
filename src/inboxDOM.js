@@ -1,5 +1,6 @@
 import { deleteItem } from './inbox.js';
 import { projects, projectInput } from './addProject.js';
+import { render } from './addProjectDOM.js';
 
 export const todosContainer = document.querySelector('#todos-display-container');
 export const inboxTitle = document.querySelector('[data-project-title-text]');
@@ -8,7 +9,26 @@ export function saveToLocalStorage(key, stringifyVar) {
     localStorage.setItem(key, JSON.stringify(stringifyVar));
 }
 
-// todos no longer exists. This has to be reworked so it works with the projects array?
+function deleteTodo(id, projects) {
+    // const itemIndex = projects[0].tasks.findIndex((todo) => {
+    //     return todo.id === id;
+    // });
+
+    const itemIndex = projects.forEach((project) => {
+        project.tasks.findIndex((todo) => {
+            return todo.id === id; // undefined as is, why? The above commented out works.
+        });
+    });
+    console.log(itemIndex);
+
+    if (itemIndex > -1) {
+        projects.forEach((project) => {
+            project.tasks.splice(itemIndex, 1);
+        })
+    }
+    // projects[0].tasks.splice(itemIndex, 1);
+}
+
 export function generateTodoDOM(todo) {
     const individualTodoContainer = document.createElement('div');
     const todoEl = document.createElement('span');
@@ -40,9 +60,12 @@ export function generateTodoDOM(todo) {
     individualTodoContainer.appendChild(markComplete);
     markComplete.checked = todo.completed;
     markComplete.addEventListener('change', (e) => {
-        deleteItem(todo.id, projects);
+        deleteTodo(todo.id, projects);
         saveToLocalStorage('projects', projects);
-        renderTodos(projects);
+        render(projects);
+        projects.forEach((project) => {
+            inboxTitle.textContent = project.title;
+        });
     });
 
     dateDue.textContent = `Due by ${todo.date}`

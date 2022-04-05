@@ -28,7 +28,7 @@ addTodoBtn.addEventListener('click', () => {
     // keep an eye on the forEach loop below. Might do unwanted things down the line
     projects.forEach((project) => {
         if (inboxTitle.textContent !== project.title) {
-            inboxTitle.textContent = project.title
+            inboxTitle.textContent = project.title;
         }
     });
     title.value = '';
