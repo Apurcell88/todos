@@ -14,7 +14,7 @@ export function generateProjectDOM(project) {
     projectEl.classList.add('enter-project-button');
     // below is more than likely wrong, but we can at least see some functionality
     projectEl.addEventListener('click', (e) => {
-        // render(projects);
+        render(projects);
         inboxTitle.textContent = project.title;
         
 

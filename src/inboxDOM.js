@@ -9,16 +9,18 @@ export function saveToLocalStorage(key, stringifyVar) {
     localStorage.setItem(key, JSON.stringify(stringifyVar));
 }
 
-function deleteTodo(id, projects) {
-    // const itemIndex = projects[0].tasks.findIndex((todo) => {
-    //     return todo.id === id;
-    // });
+function deleteTodo(todoId, projectId, projects) {
+    // more than likely gonna have to change this later.
+    let itemIndex = 0;
 
-    const itemIndex = projects.forEach((project) => {
-        project.tasks.findIndex((todo) => {
-            return todo.id === id; // undefined as is, why? The above commented out works.
-        });
+    projects.forEach((project) => {
+        if (project.id === projectId) {
+            itemIndex = project.tasks.findIndex((todo) => {
+                return todo.id === todoId;
+            });
+        }
     });
+
     console.log(itemIndex);
 
     if (itemIndex > -1) {
@@ -26,7 +28,6 @@ function deleteTodo(id, projects) {
             project.tasks.splice(itemIndex, 1);
         })
     }
-    // projects[0].tasks.splice(itemIndex, 1);
 }
 
 export function generateTodoDOM(todo) {
@@ -60,7 +61,7 @@ export function generateTodoDOM(todo) {
     individualTodoContainer.appendChild(markComplete);
     markComplete.checked = todo.completed;
     markComplete.addEventListener('change', (e) => {
-        deleteTodo(todo.id, projects);
+        deleteTodo(todo.id, projects.id, projects);
         saveToLocalStorage('projects', projects);
         render(projects);
         projects.forEach((project) => {
