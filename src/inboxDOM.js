@@ -1,4 +1,4 @@
-import { deleteItem } from './inbox.js';
+import { deleteTodo } from './inbox.js';
 import { projects, projectInput } from './addProject.js';
 import { render } from './addProjectDOM.js';
 
@@ -7,27 +7,6 @@ export const inboxTitle = document.querySelector('[data-project-title-text]');
 
 export function saveToLocalStorage(key, stringifyVar) {
     localStorage.setItem(key, JSON.stringify(stringifyVar));
-}
-
-function deleteTodo(todoId, projectId, projects) {
-    // more than likely gonna have to change this later.
-    let itemIndex = 0;
-
-    projects.forEach((project) => {
-        if (project.id === projectId) {
-            itemIndex = project.tasks.findIndex((todo) => {
-                return todo.id === todoId;
-            });
-        }
-    });
-
-    console.log(itemIndex);
-
-    if (itemIndex > -1) {
-        projects.forEach((project) => {
-            project.tasks.splice(itemIndex, 1);
-        })
-    }
 }
 
 export function generateTodoDOM(todo) {
@@ -61,11 +40,12 @@ export function generateTodoDOM(todo) {
     individualTodoContainer.appendChild(markComplete);
     markComplete.checked = todo.completed;
     markComplete.addEventListener('change', (e) => {
-        deleteTodo(todo.id, projects.id, projects);
+        deleteTodo(todo.id, projects.id, projects); // something going on with this function?
         saveToLocalStorage('projects', projects);
-        render(projects);
+        // render(projects);
         projects.forEach((project) => {
             inboxTitle.textContent = project.title;
+            render(project, project.id);
         });
     });
 
@@ -75,14 +55,3 @@ export function generateTodoDOM(todo) {
 
     return individualTodoContainer;
 }
-
-export function renderTodos(todos) {
-    todosContainer.innerHTML = ''; 
-    const incompleteTodos = todos.filter((todo) => {
-        return !todo.completed;
-    });
-    
-    incompleteTodos.forEach((todo) => {
-        todosContainer.appendChild(generateTodoDOM(todo));
-    });
-};

@@ -14,7 +14,7 @@ export function generateProjectDOM(project) {
     projectEl.classList.add('enter-project-button');
     // below is more than likely wrong, but we can at least see some functionality
     projectEl.addEventListener('click', (e) => {
-        render(projects);
+        render(project, project.id);
         inboxTitle.textContent = project.title;
         
 
@@ -44,18 +44,36 @@ export function renderProjects(projects) {
     });
 }
 
-export function render(todos) {
+// export function render(todos) { // have to rework this to display proper todos for each project
+//     todosContainer.innerHTML = '';
+
+//     let incompleteTodos = [];
+
+//     for (let i = 0; i <= todos.length - 1; i++) {
+//         todos[i].tasks.forEach((task) => {
+//              incompleteTodos.push(task);
+//         });
+//     }
+
+//     incompleteTodos.forEach((todo) => {
+//         todosContainer.appendChild(generateTodoDOM(todo));
+//     });
+// };
+
+export function render(project, projectId) {
     todosContainer.innerHTML = '';
 
     let incompleteTodos = [];
 
-    for (let i = 0; i <= todos.length - 1; i++) {
-        todos[i].tasks.forEach((task) => {
-             incompleteTodos.push(task);
+    if (project.id === projectId) {
+        project.tasks.forEach((task) => {
+            incompleteTodos.push(task);
         });
     }
 
     incompleteTodos.forEach((todo) => {
         todosContainer.appendChild(generateTodoDOM(todo));
     });
+
+    incompleteTodos.splice(0, incompleteTodos.length);
 };

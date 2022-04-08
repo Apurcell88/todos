@@ -1,13 +1,9 @@
-import { addTaskBtn } from "./index.js";
-import { renderTodos } from "./inboxDOM.js";
-import { projects } from "./addProject.js";
 import { v4 as uuidv4 } from 'uuid';
 
 export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
 export const date = document.querySelector('[data-date]');
 
-// this function is now not working as intended. Why? Maybe because now the todos are imbedded inside of an object. Todos are also still an array though.
 export function deleteItem(id, array) {
     const itemIndex = array.findIndex((todo) => {
         return todo.id === id;
@@ -15,6 +11,27 @@ export function deleteItem(id, array) {
 
     if (itemIndex > -1) {
         array.splice(itemIndex, 1);
+    }
+}
+
+export function deleteTodo(todoId, projectId, projects) {
+    // something going on with this function. Not working as intended.
+    let itemIndex = 0;
+
+    projects.forEach((project) => {
+        if (project.id === projectId) {
+            itemIndex = project.tasks.findIndex((todo) => {
+                return todo.id === todoId;
+            });
+        }
+    });
+
+    console.log(itemIndex);
+
+    if (itemIndex > -1) {
+        projects.forEach((project) => {
+            project.tasks.splice(itemIndex, 1);
+        })
     }
 }
 
