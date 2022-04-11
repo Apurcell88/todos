@@ -15,7 +15,7 @@ export function deleteItem(id, array) {
 }
 
 export function deleteTodo(todoId, projectId, projects) {
-    // something going on with this function. Not working as intended.
+    // something going on with this function. Not working as intended. Come back after projects are displaying properly.
     let itemIndex = 0;
 
     projects.forEach((project) => {

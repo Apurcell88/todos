@@ -45,7 +45,7 @@ export function generateTodoDOM(todo) {
         // render(projects);
         projects.forEach((project) => {
             inboxTitle.textContent = project.title;
-            render(project, project.id);
+            render(projects, project.id);
         });
     });
 

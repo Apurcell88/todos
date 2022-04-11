@@ -1,4 +1,4 @@
-import { deleteItem } from "./inbox";
+import { deleteItem, Todos } from "./inbox";
 import { projects } from "./addProject";
 import { saveToLocalStorage, inboxTitle, todosContainer, generateTodoDOM } from "./inboxDOM";
 
@@ -14,9 +14,10 @@ export function generateProjectDOM(project) {
     projectEl.classList.add('enter-project-button');
     // below is more than likely wrong, but we can at least see some functionality
     projectEl.addEventListener('click', (e) => {
-        render(project, project.id);
+        // saveToLocalStorage('projects', projects); // just added
+        todosContainer.textContent = ''; // just added
+        render(projects, project.id);
         inboxTitle.textContent = project.title;
-        
 
         
     });
@@ -60,20 +61,51 @@ export function renderProjects(projects) {
 //     });
 // };
 
-export function render(project, projectId) {
-    todosContainer.innerHTML = '';
+export function render(projects, projectId) {
+    const todo = Todos();
+    // todosContainer.innerHTML = '';
 
     let incompleteTodos = [];
 
-    if (project.id === projectId) {
-        project.tasks.forEach((task) => {
+    let itemIndex = 0;
+
+    projects.forEach((project) => {
+        if (project.id === projectId) {
+            itemIndex = projects.findIndex((project) => {
+                return project.id === projectId;
+            });
+        }
+    });
+
+    console.log(itemIndex);
+    console.log(projects[itemIndex]);
+    
+    
+    if (itemIndex > -1) {
+        // something is off here?
+        projects[itemIndex].tasks.push(todo.createTodo());
+        projects[itemIndex].tasks.forEach((task) => {
             incompleteTodos.push(task);
+        });
+
+        incompleteTodos.forEach((todo) => {
+            todosContainer.appendChild(generateTodoDOM(todo));
         });
     }
 
-    incompleteTodos.forEach((todo) => {
-        todosContainer.appendChild(generateTodoDOM(todo));
-    });
+    
 
-    incompleteTodos.splice(0, incompleteTodos.length);
+        // project.tasks.push(todo.createTodo());
+        // project.tasks.forEach((task) => {
+        //     incompleteTodos.push(task);
+        // });
+
+        // incompleteTodos.forEach((todo) => {
+        //     todosContainer.appendChild(generateTodoDOM(todo));
+        // });
+    
+
+    
+
+    // incompleteTodos.splice(0, incompleteTodos.length);
 };
