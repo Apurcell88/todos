@@ -2,6 +2,8 @@ import { deleteItem, Todos } from "./inbox";
 import { projects } from "./addProject";
 import { saveToLocalStorage, inboxTitle, todosContainer, generateTodoDOM } from "./inboxDOM";
 
+export let incompleteTodos = []; // now a global variable
+
 export function generateProjectDOM(project) {
     const individualProjectContainer = document.createElement('div');
     const projectEl = document.createElement('button');
@@ -65,13 +67,13 @@ export function render(projects, projectId) {
     const todo = Todos();
     // todosContainer.innerHTML = '';
 
-    let incompleteTodos = [];
+    // let incompleteTodos = []; // make into a global variable?
 
-    let itemIndex = 0;
+    let itemIndex;
 
     projects.forEach((project) => {
         if (project.id === projectId) {
-            itemIndex = projects.findIndex((project) => {
+           itemIndex = projects.findIndex((project) => {
                 return project.id === projectId;
             });
         }
@@ -83,15 +85,24 @@ export function render(projects, projectId) {
     
     if (itemIndex > -1) {
         // something is off here?
+        if (inboxTitle.textContent !== projects[itemIndex].title) {
+            inboxTitle.textContent = projects[itemIndex].title;
+        }
         projects[itemIndex].tasks.push(todo.createTodo());
-        projects[itemIndex].tasks.forEach((task) => {
+        saveToLocalStorage('projects', projects);
+        
+
+         projects[itemIndex].tasks.forEach((task) => {
             incompleteTodos.push(task);
         });
+        
 
         incompleteTodos.forEach((todo) => {
             todosContainer.appendChild(generateTodoDOM(todo));
         });
     }
+
+    incompleteTodos.splice(0, incompleteTodos.length);
 
     
 
@@ -103,9 +114,4 @@ export function render(projects, projectId) {
         // incompleteTodos.forEach((todo) => {
         //     todosContainer.appendChild(generateTodoDOM(todo));
         // });
-    
-
-    
-
-    // incompleteTodos.splice(0, incompleteTodos.length);
 };

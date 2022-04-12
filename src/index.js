@@ -21,15 +21,14 @@ addTodoBtn.addEventListener('click', () => {
     // const todo = Todos();
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
     projects.forEach((project) => {
-        if (inboxTitle.textContent !== project.title) {
-            inboxTitle.textContent = project.title;
-        }
+    //     if (inboxTitle.textContent !== project.title) {
+    //         inboxTitle.textContent = project.title;
+    //     }
         // project.tasks.push(todo.createTodo())
-        saveToLocalStorage('projects', projects);
+        // saveToLocalStorage('projects', projects);
         // console.log(project.tasks);
         render(projects, project.id); // problem is that I need this outside the forEach
     });
-    // render(projects, projects.id); // not adding the todo
     
     // keep an eye on the forEach loop below. Might do unwanted things down the line
     // projects.forEach((project) => {
