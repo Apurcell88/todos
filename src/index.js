@@ -18,24 +18,25 @@ addTaskBtn.addEventListener('click', (e) => {
 
 addTodoBtn.addEventListener('click', () => {
     todosContainer.textContent = '';
-    // const todo = Todos();
+    const todo = Todos();
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
     projects.forEach((project) => {
-    //     if (inboxTitle.textContent !== project.title) {
-    //         inboxTitle.textContent = project.title;
-    //     }
-        // project.tasks.push(todo.createTodo())
-        // saveToLocalStorage('projects', projects);
-        // console.log(project.tasks);
-        render(projects, project.id); // problem is that I need this outside the forEach
+        if (inboxTitle.textContent !== project.title) {
+            inboxTitle.textContent = project.title;
+        }
+        project.tasks.push(todo.createTodo())
+        saveToLocalStorage('projects', projects);
+        console.log(project.tasks);
+       // render(projects, project.id); // problem is that I need this outside the forEach
     });
+    render(projects); // problem is that I need this outside the forEach
     
     // keep an eye on the forEach loop below. Might do unwanted things down the line
-    // projects.forEach((project) => {
-    //     if (inboxTitle.textContent !== project.title) {
-    //         inboxTitle.textContent = project.title;
-    //     }
-    // });
+    projects.forEach((project) => {
+        if (inboxTitle.textContent !== project.title) {
+            inboxTitle.textContent = project.title;
+        }
+    });
     title.value = '';
     priority.value = '';
     date.value = '';
@@ -52,10 +53,11 @@ addProjectBtn.addEventListener('click', (e) => {
     project.createProject();
     saveToLocalStorage('projects', projects);
     toggleInboxPopup('[data-add-project-popup]', addProjectNavBtn);
-    // renderProjects(projects);
+    renderProjects(projects);
     // projects.forEach((project) => {
-        render(projects, projects.id); // needs to be out of the forEach()
+        render(projects, project.id); // needs to be out of the forEach() ??
     // })
+    render(projects);
     inboxTitle.textContent = projectInput.value;
     projectInput.value = ''; 
     // console.log(projects);
