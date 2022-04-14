@@ -3,6 +3,7 @@ import { projects } from "./addProject";
 import { saveToLocalStorage, inboxTitle, todosContainer, generateTodoDOM } from "./inboxDOM";
 
 export let incompleteTodos = []; // now a global variable
+let itemIndex;
 
 export function generateProjectDOM(project) {
     const individualProjectContainer = document.createElement('div');
@@ -32,7 +33,7 @@ export function generateProjectDOM(project) {
         inboxTitle.innerHTML = '';
         deleteItem(project.id, projects);
         saveToLocalStorage('projects', projects);
-        renderProjects(projects);
+        renderProjects(projects, projects.title);
     });
 
     return individualProjectContainer;
@@ -63,25 +64,42 @@ export function renderProjects(projects) {
 //     });
 // };
 
-export function render(projects) { // have to rework this to display proper todos for each project
+export function render(projects, projectTitle) { // have to rework this to display proper todos for each project
+    const todo = Todos();
     todosContainer.innerHTML = '';
 
     // let incompleteTodos = [];
-    console.log(projects[1]);
-//     projects[1].tasks.forEach((task) => {
-//         incompleteTodos.push(task);
-//    });
+    
+    // need this to not be static, needs to be interactive
+    // projects[0].tasks.push(todo.createTodo());
+    // projects[0].tasks.forEach((task) => {
+    //     incompleteTodos.push(task);
+    // });
 
+    // console.log(projects[0].tasks);
+   
     // need a way to distinguish between projects so we can access the tasks...
-    // for (let i = 0; i <= todos.length - 1; i++) {
-    //     todos[i].tasks.forEach((task) => {
-    //          incompleteTodos.push(task);
-    //     });
-    // }
-
-    incompleteTodos.forEach((todo) => {
-        todosContainer.appendChild(generateTodoDOM(todo));
+    projects.forEach((project) => {
+        if (project.title === projectTitle) {
+            console.log('yay');
+            itemIndex = projects.findIndex((project) => {
+                 return project.title === projectTitle; // not returning itemIndex?
+             });
+        }
     });
+    
+    if (itemIndex > -1) { 
+        console.log('it worked!');
+        if (projects[itemIndex].title === title) {
+            projects[itemIndex].tasks.push(todo.createTodo());
+        }
+    } else {
+        console.log('something went very wrong');
+    }
+
+    // incompleteTodos.forEach((todo) => {
+    //     todosContainer.appendChild(generateTodoDOM(todo));
+    // });
 
     incompleteTodos.splice(0, incompleteTodos.length);
 };
@@ -97,11 +115,11 @@ export function render(projects) { // have to rework this to display proper todo
 //     let itemIndex;
 
 //     projects.forEach((project) => {
-//         if (project.id === projectId) {
-//            itemIndex = projects.findIndex((project) => {
-//                 return project.id === projectId;
-//             });
-//         }
+        // if (project.id === projectId) {
+        //    itemIndex = projects.findIndex((project) => {
+        //         return project.id === projectId;
+        //     });
+        // }
 //     });
 
 //     console.log(itemIndex);
