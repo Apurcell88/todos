@@ -8,7 +8,6 @@ import { renderProjects, render } from './addProjectDOM';
 export const addTaskBtn = document.querySelector('[data-toggle-task-btn]');
 const addTodoBtn = document.querySelector('[data-add-todo-btn]');
 const cancelTodoBtn = document.querySelector('[data-cancel-todo-btn]');
-// const inboxNavBtn = document.querySelector('[data-inbox]');
 const addProjectBtn = document.querySelector('[data-add-project-btn]');
 
 // Default inbox load
@@ -18,18 +17,17 @@ addTaskBtn.addEventListener('click', (e) => {
 
 addTodoBtn.addEventListener('click', () => {
     todosContainer.textContent = '';
-    // const todo = Todos();
+    const todo = Todos(); 
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
+    // as the loop below currently stands, it's NOT differentiating between projects. This needs to be moved into the render function so it renders properly
     projects.forEach((project) => {
-        if (inboxTitle.textContent !== project.title) {
-            inboxTitle.textContent = project.title;
-        }
+        // if (inboxTitle.textContent !== project.title) {
+        //     inboxTitle.textContent = project.title;
+        // }
         // project.tasks.push(todo.createTodo())
-        saveToLocalStorage('projects', projects);
-        // console.log(project.tasks);
-        // render(projects); // problem is that I need this outside the forEach
+        // saveToLocalStorage('projects', projects);
+        render(projects, project.id);
     });
-    render(projects);
     
     // keep an eye on the forEach loop below. Might do unwanted things down the line
     projects.forEach((project) => {

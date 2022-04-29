@@ -3,7 +3,7 @@ import { projects } from "./addProject";
 import { saveToLocalStorage, inboxTitle, todosContainer, generateTodoDOM } from "./inboxDOM";
 
 export let incompleteTodos = []; // now a global variable
-let itemIndex;
+// let itemIndex;
 
 export function generateProjectDOM(project) {
     const individualProjectContainer = document.createElement('div');
@@ -64,44 +64,31 @@ export function renderProjects(projects) {
 //     });
 // };
 
-export function render(projects, projectTitle) { // have to rework this to display proper todos for each project
-    const todo = Todos();
+export function render(projects, id) {
+    const todo = Todos(); 
+
     todosContainer.innerHTML = '';
 
-    // let incompleteTodos = [];
-    
-    // need this to not be static, needs to be interactive
-    // projects[0].tasks.push(todo.createTodo());
-    // projects[0].tasks.forEach((task) => {
-    //     incompleteTodos.push(task);
-    // });
+    const foundProject = projects.find((project) => {
+        id === project.id;
+    })
+    console.log(foundProject); // undefined. Code above is wrong. Not finding the id
 
-    // console.log(projects[0].tasks);
-   
-    // need a way to distinguish between projects so we can access the tasks...
     projects.forEach((project) => {
-        if (project.title === projectTitle) {
-            console.log('yay');
-            itemIndex = projects.findIndex((project) => {
-                 return project.title === projectTitle; // not returning itemIndex?
-             });
+        if (inboxTitle.textContent !== project.title) {
+            inboxTitle.textContent = project.title;
         }
+
+        foundProject.tasks.push(todo.createTodo());
+        saveToLocalStorage('projects', projects);
+        foundProject.tasks.forEach((task) => {
+            incompleteTodos.push(task);
+        });
     });
-    
-    if (itemIndex > -1) { 
-        console.log('it worked!');
-        if (projects[itemIndex].title === title) {
-            projects[itemIndex].tasks.push(todo.createTodo());
-        }
-    } else {
-        console.log('something went very wrong');
-    }
 
-    // incompleteTodos.forEach((todo) => {
-    //     todosContainer.appendChild(generateTodoDOM(todo));
-    // });
-
-    incompleteTodos.splice(0, incompleteTodos.length);
+    incompleteTodos.forEach((todo) => {
+        todosContainer.appendChild(generateTodoDOM(todo));
+    });
 };
 
 
