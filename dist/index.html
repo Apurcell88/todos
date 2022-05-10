@@ -77,11 +77,13 @@
             </svg>Add Task</button>
             <!-- <button id="delete-todo">Delete Todo</button> -->
             <div class="hide-display add-popup" data-task-popup>
-              <input class="input-style" id="todo-to-add-text" type="text" placeholder="Todo to add">
+              <input class="input-style" type="text" placeholder="Project to place todo in" data-place-todo> <!-- just added -->
+              <input class="input-style" id="todo-to-add-text" type="text" placeholder="Todo to add">  
               <input data-priority class="input-style" type="text" placeholder="Priority">
-              <input type="date" class="input-style" data-date> <!--This was just added-->
+              <!-- <input type="date" class="input-style" data-date> -->
               <div class="add-cancel-container">
-                <button data-add-todo-btn class="add-cancel-btn add-btn">Add</button>
+                <!--This needs to be dynamic in JS instead of hard coded in HTML-->
+                <button data-add-todo-btn class="add-cancel-btn add-btn">Add</button> 
                 <button data-cancel-todo-btn class="add-cancel-btn cancel-btn">Cancel</button>
               </div>
             </div>

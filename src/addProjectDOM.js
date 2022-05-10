@@ -2,7 +2,7 @@ import { deleteItem, Todos } from "./inbox";
 import { projects } from "./addProject";
 import { saveToLocalStorage, inboxTitle, todosContainer, generateTodoDOM } from "./inboxDOM";
 
-export let incompleteTodos = []; // now a global variable
+export let incompleteTodos = []; // now a global variable.
 // let itemIndex;
 
 export function generateProjectDOM(project) {
@@ -18,11 +18,20 @@ export function generateProjectDOM(project) {
     // below is more than likely wrong, but we can at least see some functionality
     projectEl.addEventListener('click', (e) => {
         // saveToLocalStorage('projects', projects); // just added
+        // console.log(e.srcElement.textContent)
         todosContainer.textContent = '';
         render(projects);
         inboxTitle.textContent = project.title;
 
-        
+        const specificTodos = incompleteTodos.filter((todo) => {
+            if (e.srcElement.textContent === todo.placeTodo) {
+                return todo.title
+            }
+        });
+
+        specificTodos.forEach((todo) => {
+            todosContainer.appendChild(generateTodoDOM(todo));
+        });
     });
 
     deleteProjectBtn.textContent = 'X';
@@ -38,6 +47,21 @@ export function generateProjectDOM(project) {
 
     return individualProjectContainer;
 }
+// export function render(todos) { // have to rework this to display proper todos for each project
+//     todosContainer.innerHTML = '';
+
+//     // let incompleteTodos = [];
+
+    // for (let i = 0; i <= todos.length - 1; i++) {
+    //     todos[i].tasks.forEach((task) => {
+    //          incompleteTodos.push(task);
+    //     });
+    // }
+
+    // incompleteTodos.forEach((todo) => {
+    //     todosContainer.appendChild(generateTodoDOM(todo));
+    // });
+// };
 
 export function renderProjects(projects) {
     const projectsContainer = document.querySelector('[data-projects-container]');
@@ -48,100 +72,44 @@ export function renderProjects(projects) {
     });
 }
 
-// export function render(todos) { // have to rework this to display proper todos for each project
-//     todosContainer.innerHTML = '';
-
-//     // let incompleteTodos = [];
-
-//     for (let i = 0; i <= todos.length - 1; i++) {
-//         todos[i].tasks.forEach((task) => {
-//              incompleteTodos.push(task);
-//         });
-//     }
-
-//     incompleteTodos.forEach((todo) => {
-//         todosContainer.appendChild(generateTodoDOM(todo));
-//     });
-// };
-
-export function render(projects, id) {
-    const todo = Todos(); 
-
+export function render(projects) {
+    // incompleteTodos = []
+    // const todo = Todos();
     todosContainer.innerHTML = '';
 
-    const foundProject = projects.find((project) => {
-        id === project.id;
-    })
-    console.log(foundProject); // undefined. Code above is wrong. Not finding the id
+    // let incompleteTodos = []; // all of the todos get put here. Have to sort them into different projects. Need correlation between projects/project tasks. Todos go in the project.tasks
 
-    projects.forEach((project) => {
-        if (inboxTitle.textContent !== project.title) {
-            inboxTitle.textContent = project.title;
-        }
-
-        foundProject.tasks.push(todo.createTodo());
-        saveToLocalStorage('projects', projects);
-        foundProject.tasks.forEach((task) => {
-            incompleteTodos.push(task);
+    for (let i = 0; i <= projects.length - 1; i++) {
+        projects[i].tasks.forEach((task, index) => {
+            // if (projects[i].tasks[index].includes(incompleteTodos)) {
+            //     incompleteTodos.push(task);
+            // }
+            if (incompleteTodos.includes(task)) {
+                console.log('task already in array')
+            }
+             else {
+                incompleteTodos.push(task);
+            }
+             
         });
-    });
+    }
 
-    incompleteTodos.forEach((todo) => {
-        todosContainer.appendChild(generateTodoDOM(todo));
-    });
-};
+    console.log(incompleteTodos)
 
+    // project.tasks.push(todo.createTodo())
+    // incompleteTodos.push(todo.createTodo)
+    // saveToLocalStorage('projects', projects);
 
+    // console.log(projects)
+    // const specificTodos = incompleteTodos.filter((todo) => {
+    //     return !projects.some((project) => {
+    //         return todo.placeTodo === project.title
+    //     });
+    // })
 
-// export function render(projects, projectId) {
-//     const todo = Todos();
-//     // todosContainer.innerHTML = '';
+    // console.log(specificTodos)
 
-//     // let incompleteTodos = []; // make into a global variable?
-
-//     let itemIndex;
-
-//     projects.forEach((project) => {
-        // if (project.id === projectId) {
-        //    itemIndex = projects.findIndex((project) => {
-        //         return project.id === projectId;
-        //     });
-        // }
-//     });
-
-//     console.log(itemIndex);
-    
-//     if (itemIndex > -1) {
-//         // something is off here. The projects aren't being distinguished
-//         if (inboxTitle.textContent !== projects[itemIndex].title) {
-//             inboxTitle.textContent = projects[itemIndex].title;
-//         }
-
-//         projects[itemIndex].tasks.push(todo.createTodo());
-//         saveToLocalStorage('projects', projects);
-        
-//         console.log(projects[itemIndex]);
-//         projects[itemIndex].tasks.forEach((task) => {
-//             incompleteTodos.push(task);
-//         });
-        
-
-//         incompleteTodos.forEach((todo) => {
-//             todosContainer.appendChild(generateTodoDOM(todo));
-//         });
-//     }
-
-//     incompleteTodos.splice(0, incompleteTodos.length);
-//     console.log(incompleteTodos);
-
-    
-
-//         // project.tasks.push(todo.createTodo());
-//         // project.tasks.forEach((task) => {
-//         //     incompleteTodos.push(task);
-//         // });
-
-//         // incompleteTodos.forEach((todo) => {
-//         //     todosContainer.appendChild(generateTodoDOM(todo));
-//         // });
-// };
+    // specificTodos.forEach((todo) => {
+    //     todosContainer.appendChild(generateTodoDOM(todo));
+    // });
+}

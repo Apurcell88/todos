@@ -17,17 +17,19 @@ addTaskBtn.addEventListener('click', (e) => {
 
 addTodoBtn.addEventListener('click', () => {
     todosContainer.textContent = '';
-    const todo = Todos(); 
+    const todo = Todos();
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
     // as the loop below currently stands, it's NOT differentiating between projects. This needs to be moved into the render function so it renders properly
     projects.forEach((project) => {
         // if (inboxTitle.textContent !== project.title) {
         //     inboxTitle.textContent = project.title;
         // }
-        // project.tasks.push(todo.createTodo())
-        // saveToLocalStorage('projects', projects);
-        render(projects, project.id);
+        project.tasks.push(todo.createTodo())
+        saveToLocalStorage('projects', projects);
+        // render(projects);
     });
+    render(projects);
+    
     
     // keep an eye on the forEach loop below. Might do unwanted things down the line
     projects.forEach((project) => {
@@ -37,7 +39,7 @@ addTodoBtn.addEventListener('click', () => {
     });
     title.value = '';
     priority.value = '';
-    date.value = '';
+    // date.value = '';
 });
 
 cancelTodoBtn.addEventListener('click', () => {

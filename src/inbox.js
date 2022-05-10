@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
 export const date = document.querySelector('[data-date]');
+export const placeTodo = document.querySelector('[data-place-todo]') // just added
 
 export function deleteItem(id, array) {
     const itemIndex = array.findIndex((todo) => {
@@ -56,11 +57,12 @@ export function Todos() {
     return {
         createTodo() {
             return {
+                placeTodo: placeTodo.value, // just added
                 title: title.value,
                 priority: priority.value.toLowerCase(),
                 id: uuidv4(),
                 completed: false,
-                date: date.value,
+                // date: date.value,
             };
         },
     }

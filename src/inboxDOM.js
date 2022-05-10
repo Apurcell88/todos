@@ -14,7 +14,7 @@ export function generateTodoDOM(todo) {
     const todoEl = document.createElement('span');
     const markComplete = document.createElement('input');
     const completedText = document.createElement('span');
-    const dateDue = document.createElement('p');
+    // const dateDue = document.createElement('p');
 
     inboxTitle.textContent = projectInput.value;
 
@@ -45,13 +45,13 @@ export function generateTodoDOM(todo) {
         // render(projects);
         projects.forEach((project) => {
             inboxTitle.textContent = project.title;
-            render(projects, project.id);
+            render(projects);
         });
     });
 
-    dateDue.textContent = `Due by ${todo.date}`
-    individualTodoContainer.appendChild(dateDue);
-    dateDue.classList.add('todo-el');
+    // dateDue.textContent = `Due by ${todo.date}`
+    // individualTodoContainer.appendChild(dateDue);
+    // dateDue.classList.add('todo-el');
 
     return individualTodoContainer;
 }
