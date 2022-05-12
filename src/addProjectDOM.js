@@ -72,19 +72,17 @@ export function renderProjects(projects) {
     });
 }
 
-export function render(projects) {
-    // incompleteTodos = []
-    // const todo = Todos();
+export function render(projects) { // need to change function name as this doesn't render anyymore. Maybe call it pushTodos?
     todosContainer.innerHTML = '';
 
     // let incompleteTodos = []; // all of the todos get put here. Have to sort them into different projects. Need correlation between projects/project tasks. Todos go in the project.tasks
 
     for (let i = 0; i <= projects.length - 1; i++) {
-        projects[i].tasks.forEach((task, index) => {
+        projects[i].tasks.forEach((task) => {
             // if (projects[i].tasks[index].includes(incompleteTodos)) {
             //     incompleteTodos.push(task);
             // }
-            if (incompleteTodos.includes(task)) {
+            if (incompleteTodos.includes(task)) { // maybe change to ! and move the else statement into here?
                 console.log('task already in array')
             }
              else {
@@ -99,17 +97,4 @@ export function render(projects) {
     // project.tasks.push(todo.createTodo())
     // incompleteTodos.push(todo.createTodo)
     // saveToLocalStorage('projects', projects);
-
-    // console.log(projects)
-    // const specificTodos = incompleteTodos.filter((todo) => {
-    //     return !projects.some((project) => {
-    //         return todo.placeTodo === project.title
-    //     });
-    // })
-
-    // console.log(specificTodos)
-
-    // specificTodos.forEach((todo) => {
-    //     todosContainer.appendChild(generateTodoDOM(todo));
-    // });
 }

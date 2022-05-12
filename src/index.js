@@ -9,26 +9,30 @@ export const addTaskBtn = document.querySelector('[data-toggle-task-btn]');
 const addTodoBtn = document.querySelector('[data-add-todo-btn]');
 const cancelTodoBtn = document.querySelector('[data-cancel-todo-btn]');
 const addProjectBtn = document.querySelector('[data-add-project-btn]');
+const placeTodoInProject = document.querySelector('[data-place-todo]')
 
 // Default inbox load
 addTaskBtn.addEventListener('click', (e) => {
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
 });
 
-addTodoBtn.addEventListener('click', () => {
+addTodoBtn.addEventListener('click', (e) => {
     todosContainer.textContent = '';
     const todo = Todos();
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
-    // as the loop below currently stands, it's NOT differentiating between projects. This needs to be moved into the render function so it renders properly
-    projects.forEach((project) => {
-        // if (inboxTitle.textContent !== project.title) {
-        //     inboxTitle.textContent = project.title;
-        // }
-        project.tasks.push(todo.createTodo())
-        saveToLocalStorage('projects', projects);
-        // render(projects);
-    });
+
     render(projects);
+
+    // BRAND NEW - project names aren't showing up when I click the different projects, why?
+    projects.filter((project) => {
+        if (placeTodoInProject.value === project.title) {
+            project.tasks.push(todo.createTodo())
+        }
+        if (inboxTitle.textContent !== project.title) {
+            inboxTitle.textContent = project.title;
+        }
+    });
+    saveToLocalStorage('projects', projects);
     
     
     // keep an eye on the forEach loop below. Might do unwanted things down the line
