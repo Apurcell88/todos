@@ -28,9 +28,13 @@ addTodoBtn.addEventListener('click', (e) => {
         if (placeTodoInProject.value === project.title) {
             project.tasks.push(todo.createTodo())
         }
-        if (inboxTitle.textContent !== project.title) {
-            inboxTitle.textContent = project.title;
+        else {
+            alert('This project does NOT exist!');
         }
+        // if (inboxTitle.textContent !== project.title) {
+        //     inboxTitle.textContent = project.title;
+        // }
+        inboxTitle.textContent = project.title;
     });
     saveToLocalStorage('projects', projects);
     

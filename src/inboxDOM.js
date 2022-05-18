@@ -16,8 +16,6 @@ export function generateTodoDOM(todo) {
     const completedText = document.createElement('span');
     // const dateDue = document.createElement('p');
 
-    inboxTitle.textContent = projectInput.value;
-
     todoEl.textContent = `${todo.title} Priority: ${todo.priority}`; 
     todoEl.classList.add('todo-el');
     if (todo.priority === 'high') {

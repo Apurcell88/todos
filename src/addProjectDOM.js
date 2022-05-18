@@ -18,10 +18,9 @@ export function generateProjectDOM(project) {
     // below is more than likely wrong, but we can at least see some functionality
     projectEl.addEventListener('click', (e) => {
         // saveToLocalStorage('projects', projects); // just added
-        // console.log(e.srcElement.textContent)
         todosContainer.textContent = '';
         render(projects);
-        inboxTitle.textContent = project.title;
+        inboxTitle.textContent = e.srcElement.textContent;
 
         const specificTodos = incompleteTodos.filter((todo) => {
             if (e.srcElement.textContent === todo.placeTodo) {
@@ -47,21 +46,6 @@ export function generateProjectDOM(project) {
 
     return individualProjectContainer;
 }
-// export function render(todos) { // have to rework this to display proper todos for each project
-//     todosContainer.innerHTML = '';
-
-//     // let incompleteTodos = [];
-
-    // for (let i = 0; i <= todos.length - 1; i++) {
-    //     todos[i].tasks.forEach((task) => {
-    //          incompleteTodos.push(task);
-    //     });
-    // }
-
-    // incompleteTodos.forEach((todo) => {
-    //     todosContainer.appendChild(generateTodoDOM(todo));
-    // });
-// };
 
 export function renderProjects(projects) {
     const projectsContainer = document.querySelector('[data-projects-container]');
@@ -75,14 +59,9 @@ export function renderProjects(projects) {
 export function render(projects) { // need to change function name as this doesn't render anyymore. Maybe call it pushTodos?
     todosContainer.innerHTML = '';
 
-    // let incompleteTodos = []; // all of the todos get put here. Have to sort them into different projects. Need correlation between projects/project tasks. Todos go in the project.tasks
-
     for (let i = 0; i <= projects.length - 1; i++) {
         projects[i].tasks.forEach((task) => {
-            // if (projects[i].tasks[index].includes(incompleteTodos)) {
-            //     incompleteTodos.push(task);
-            // }
-            if (incompleteTodos.includes(task)) { // maybe change to ! and move the else statement into here?
+            if (incompleteTodos.includes(task)) {
                 console.log('task already in array')
             }
              else {
@@ -91,10 +70,4 @@ export function render(projects) { // need to change function name as this doesn
              
         });
     }
-
-    console.log(incompleteTodos)
-
-    // project.tasks.push(todo.createTodo())
-    // incompleteTodos.push(todo.createTodo)
-    // saveToLocalStorage('projects', projects);
 }
