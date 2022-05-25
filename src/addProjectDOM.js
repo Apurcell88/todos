@@ -3,7 +3,6 @@ import { projects } from "./addProject";
 import { saveToLocalStorage, inboxTitle, todosContainer, generateTodoDOM } from "./inboxDOM";
 
 export let incompleteTodos = []; // now a global variable.
-// let itemIndex;
 
 export function generateProjectDOM(project) {
     const individualProjectContainer = document.createElement('div');
@@ -57,12 +56,13 @@ export function renderProjects(projects) {
 }
 
 export function render(projects) { // need to change function name as this doesn't render anyymore. Maybe call it pushTodos?
-    todosContainer.innerHTML = '';
+    todosContainer.textContent = '';
 
     for (let i = 0; i <= projects.length - 1; i++) {
         projects[i].tasks.forEach((task) => {
             if (incompleteTodos.includes(task)) {
-                console.log('task already in array')
+                // console.log('task already in array')
+                return null;
             }
              else {
                 incompleteTodos.push(task);

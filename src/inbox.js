@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { projects } from './addProject';
 
 export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
@@ -15,24 +16,20 @@ export function deleteItem(id, array) {
     }
 }
 
-export function deleteTodo(todoId, projectId, projects) {
+export function deleteTodo(todoId, projectId) {
     // something going on with this function. Not working as intended. Come back after projects are displaying properly.
-    let itemIndex = 0;
 
-    projects.forEach((project) => {
-        if (project.id === projectId) {
-            itemIndex = project.tasks.findIndex((todo) => {
-                return todo.id === todoId;
-            });
-        }
+    const projectIndex = projects.findIndex((project) => {
+        return project.id === projectId
+    })
+
+    const todoIndex = projects[projectIndex].tasks.findIndex((todo) => {
+        return todo.id === todoId;
     });
-
-    console.log(itemIndex);
-
-    if (itemIndex > -1) {
-        projects.forEach((project) => {
-            project.tasks.splice(itemIndex, 1);
-        })
+    console.log(todoIndex);
+    
+    if (todoIndex > -1) {
+        projects[projectIndex].tasks.splice(todoIndex, 1);
     }
 }
 
