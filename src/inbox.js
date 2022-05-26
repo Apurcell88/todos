@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { projects } from './addProject';
+import { incompleteTodos } from './addProjectDOM';
 
 export const title = document.querySelector('#todo-to-add-text');
 export const priority = document.querySelector('[data-priority]');
@@ -17,7 +18,6 @@ export function deleteItem(id, array) {
 }
 
 export function deleteTodo(todoId, projectId) {
-    // something going on with this function. Not working as intended. Come back after projects are displaying properly.
 
     const projectIndex = projects.findIndex((project) => {
         return project.id === projectId

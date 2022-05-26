@@ -18,7 +18,7 @@ export function generateProjectDOM(project) {
     projectEl.addEventListener('click', (e) => {
         // saveToLocalStorage('projects', projects); // just added
         todosContainer.textContent = '';
-        render(projects);
+        pushTodos(projects);
         inboxTitle.textContent = e.srcElement.textContent;
 
         const specificTodos = incompleteTodos.filter((todo) => {
@@ -55,7 +55,7 @@ export function renderProjects(projects) {
     });
 }
 
-export function render(projects) { // need to change function name as this doesn't render anyymore. Maybe call it pushTodos?
+export function pushTodos(projects) {
     todosContainer.textContent = '';
 
     for (let i = 0; i <= projects.length - 1; i++) {
@@ -70,4 +70,21 @@ export function render(projects) { // need to change function name as this doesn
              
         });
     }
+}
+
+export function render(projects) {
+    // todosContainer.textContent = '';
+
+    const specificTodos = incompleteTodos.filter((todo) => {
+        for (let i = 0; i < projects.length - 1; i++) {
+            if (projects[i].title === todo.placeTodo) {
+                return todo.title
+            }
+        }
+    });
+    console.log(specificTodos);
+
+    specificTodos.forEach((todo) => {
+        todosContainer.appendChild(generateTodoDOM(todo));
+    });
 }

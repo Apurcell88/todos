@@ -3,7 +3,7 @@ import './style.css';
 import { toggleInboxPopup, Todos, title, priority, placeTodo, date } from './inbox.js';
 import { todosContainer, saveToLocalStorage, inboxTitle } from './inboxDOM.js';
 import { createProjects, projects, projectInput, addProjectNavBtn } from './addProject.js';
-import { renderProjects, render } from './addProjectDOM';
+import { renderProjects, pushTodos } from './addProjectDOM';
 
 export const addTaskBtn = document.querySelector('[data-toggle-task-btn]');
 const addTodoBtn = document.querySelector('[data-add-todo-btn]');
@@ -19,7 +19,7 @@ addTodoBtn.addEventListener('click', (e) => {
     const todo = Todos();
     toggleInboxPopup('[data-task-popup]', addTaskBtn);
 
-    render(projects);
+    pushTodos(projects);
 
     projects.filter((project) => {
         if (placeTodo.value === project.title) {
@@ -48,7 +48,7 @@ addProjectBtn.addEventListener('click', (e) => {
     saveToLocalStorage('projects', projects);
     toggleInboxPopup('[data-add-project-popup]', addProjectNavBtn);
     renderProjects(projects);
-    render(projects);
+    pushTodos(projects);
     inboxTitle.textContent = projectInput.value;
     projectInput.value = ''; 
 });

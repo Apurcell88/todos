@@ -1,6 +1,6 @@
 import { deleteTodo } from './inbox.js';
 import { projects, projectInput } from './addProject.js';
-import { incompleteTodos, render } from './addProjectDOM.js';
+import { incompleteTodos, pushTodos, render } from './addProjectDOM.js';
 
 export const todosContainer = document.querySelector('#todos-display-container');
 export const inboxTitle = document.querySelector('[data-project-title-text]');
@@ -38,20 +38,17 @@ export function generateTodoDOM(todo) {
     individualTodoContainer.appendChild(markComplete);
     markComplete.checked = todo.completed;
     markComplete.addEventListener('change', (e) => {
-        // deleteTodo(todo.id); // something going on with this function?
-        // saveToLocalStorage('projects', projects);
-        // render(projects);
         projects.forEach((project) => {
-            // deleteTodo(todo.id, project.id);
             // inboxTitle.textContent = project.title;
-            render(projects);
+            pushTodos(projects);
         });
 
         projects.filter((project) => {
             deleteTodo(todo.id, project.id); // this works. It deletes the correct todo. Have to update the screen to reflect the change live instead of on refresh
             // console.log(incompleteTodos);
             saveToLocalStorage('projects', projects);
-        })
+        });
+        render(projects);
     });
 
     // dateDue.textContent = `Due by ${todo.date}`
