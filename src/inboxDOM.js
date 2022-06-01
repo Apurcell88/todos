@@ -1,4 +1,4 @@
-import { deleteTodo } from './inbox.js';
+import { deleteTodo, getSavedStorage } from './inbox.js';
 import { projects, projectInput } from './addProject.js';
 import { incompleteTodos, pushTodos, render } from './addProjectDOM.js';
 

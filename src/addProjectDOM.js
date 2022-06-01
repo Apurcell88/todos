@@ -76,13 +76,18 @@ export function render(projects) {
     // todosContainer.textContent = '';
 
     const specificTodos = incompleteTodos.filter((todo) => {
-        for (let i = 0; i < projects.length - 1; i++) {
-            if (projects[i].title === todo.placeTodo) {
+        // need the correct project todos to display
+        // how do we target the correct project todos?
+        projects.find((project) => {
+            if (project.title === todo.placeTodo) {
+                console.log(todo.placeTodo);
+                // console.log(project.title);
                 return todo.title
             }
-        }
+        })
     });
-    console.log(specificTodos);
+    console.log(incompleteTodos);
+    console.log(specificTodos); // returning as empty array, why?
 
     specificTodos.forEach((todo) => {
         todosContainer.appendChild(generateTodoDOM(todo));
