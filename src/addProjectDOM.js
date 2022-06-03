@@ -78,18 +78,15 @@ export function render(projects) {
     const specificTodos = incompleteTodos.filter((todo) => {
         // need the correct project todos to display
         // how do we target the correct project todos?
-        projects.find((project) => {
-            if (project.title === todo.placeTodo) {
-                console.log(todo.placeTodo);
-                // console.log(project.title);
-                return todo.title
-            }
-        })
+        const correctTodos = projects.find(project => project.title === todo.placeTodo); // this is returning all of the projects, not a specific one
+
+        return correctTodos;
     });
     console.log(incompleteTodos);
-    console.log(specificTodos); // returning as empty array, why?
+    console.log(projects);
+    // console.log(specificTodos);
 
-    specificTodos.forEach((todo) => {
-        todosContainer.appendChild(generateTodoDOM(todo));
-    });
+    // specificTodos.forEach((todo) => {
+    //     todosContainer.appendChild(generateTodoDOM(todo));
+    // });
 }
