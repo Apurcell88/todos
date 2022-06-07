@@ -72,21 +72,29 @@ export function pushTodos(projects) {
     }
 }
 
-export function render(projects) {
+export function render(projectId, todoPlace) {
     // todosContainer.textContent = '';
+    let specificTodos = [];
 
-    const specificTodos = incompleteTodos.filter((todo) => {
-        // need the correct project todos to display
-        // how do we target the correct project todos?
-        const correctTodos = projects.find(project => project.title === todo.placeTodo); // this is returning all of the projects, not a specific one
+    // console.log(incompleteTodos);
+    // console.log(projects);
 
-        return correctTodos;
+    // need to match the placeTodo with the project title. If there is a match then display the project's tasks. Don't want to loop, want to specifically target with the params
+    const projectIndex = projects.findIndex((project) => {
+        return project.id === projectId // gives a specific project
     });
-    console.log(incompleteTodos);
-    console.log(projects);
-    // console.log(specificTodos);
+    console.log(projectIndex);
 
-    // specificTodos.forEach((todo) => {
-    //     todosContainer.appendChild(generateTodoDOM(todo));
-    // });
+    if (projects[projectIndex].title === todoPlace) {
+        projects[projectIndex].tasks.forEach((task) => {
+            specificTodos.push(task.title);
+        });
+    }
+
+    console.log(specificTodos); // shows all of the projects array, the one I want is correct, but I don't want the others displaying. Might be because of where this function is placed in inboxDOM.js
+
+
+    specificTodos.forEach((todo) => {
+        todosContainer.appendChild(generateTodoDOM(todo));
+    });
 }

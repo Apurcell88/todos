@@ -26,7 +26,6 @@ export function deleteTodo(todoId, projectId) {
     const todoIndex = projects[projectIndex].tasks.findIndex((todo) => {
         return todo.id === todoId;
     });
-    console.log(todoIndex);
     
     if (todoIndex > -1) {
         projects[projectIndex].tasks.splice(todoIndex, 1);

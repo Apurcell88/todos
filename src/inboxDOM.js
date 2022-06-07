@@ -38,17 +38,17 @@ export function generateTodoDOM(todo) {
     individualTodoContainer.appendChild(markComplete);
     markComplete.checked = todo.completed;
     markComplete.addEventListener('change', (e) => {
-        projects.forEach((project) => {
-            // inboxTitle.textContent = project.title;
-            pushTodos(projects);
-        });
+        pushTodos(projects);
 
         projects.filter((project) => {
-            deleteTodo(todo.id, project.id); // this works. It deletes the correct todo. Have to update the screen to reflect the change live instead of on refresh
-            // console.log(incompleteTodos);
+            deleteTodo(todo.id, project.id); // this works. It deletes the correct todo.
             saveToLocalStorage('projects', projects);
+            //location.reload(); // refreshes the web page
         });
-        render(projects);
+
+        projects.find((project) => {
+            render(project.id, todo.placeTodo); // this will load the page with the correct todos
+        });
     });
 
     // dateDue.textContent = `Due by ${todo.date}`
