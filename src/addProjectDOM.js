@@ -83,7 +83,7 @@ export function render(projectId, todoPlace) {
     const projectIndex = projects.findIndex((project) => {
         return project.id === projectId // gives a specific project
     });
-    console.log(projectIndex);
+    // console.log(projectIndex);
 
     if (projects[projectIndex].title === todoPlace) {
         projects[projectIndex].tasks.forEach((task) => {
@@ -93,8 +93,9 @@ export function render(projectId, todoPlace) {
 
     console.log(specificTodos); // shows all of the projects array, the one I want is correct, but I don't want the others displaying. Might be because of where this function is placed in inboxDOM.js
 
+    return specificTodos;
 
-    specificTodos.forEach((todo) => {
-        todosContainer.appendChild(generateTodoDOM(todo));
-    });
+    // specificTodos.forEach((todo) => {
+    //     todosContainer.appendChild(generateTodoDOM(todo));
+    // });
 }
