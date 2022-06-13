@@ -1,4 +1,4 @@
-import { deleteItem, Todos } from "./inbox";
+import { deleteItem, deleteTodo, Todos } from "./inbox";
 import { projects } from "./addProject";
 import { saveToLocalStorage, inboxTitle, todosContainer, generateTodoDOM } from "./inboxDOM";
 
@@ -27,8 +27,8 @@ export function generateProjectDOM(project) {
             }
         });
 
-        specificTodos.forEach((todo) => {
-            todosContainer.appendChild(generateTodoDOM(todo));
+        specificTodos.filter((todo) => {
+            render(project.id, todo.placeTodo);
         });
     });
 
@@ -73,18 +73,19 @@ export function pushTodos(projects) {
 }
 
 export function render(projectId, todoPlace) {
-    // console.log(incompleteTodos);
-    // console.log(projects);
-
+    todosContainer.innerHTML = '';
     // need to match the placeTodo with the project title. If there is a match then display the project's tasks. Don't want to loop, want to specifically target with the params
     const projectIndex = projects.findIndex((project) => {
         return project.id === projectId // gives a specific project
     });
 
     if (projects[projectIndex].title === todoPlace) {
+        
         projects[projectIndex].tasks.forEach((task) => {
             todosContainer.appendChild(generateTodoDOM(task))
         });
     }
+
+    console.log(incompleteTodos);
 
 }

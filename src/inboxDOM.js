@@ -43,8 +43,8 @@ export function generateTodoDOM(todo) {
         projects.filter((project) => {
             deleteTodo(todo.id, project.id); // this works. It deletes the correct todo.
             saveToLocalStorage('projects', projects);
-            render(project.id, todo.placeTodo); // this will load the page with the correct todos
             // location.reload(); // refreshes the web page
+            render(project.id, todo.placeTodo); // this will load the page with the correct todos
         });
     });
 

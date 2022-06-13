@@ -24,9 +24,10 @@ addTodoBtn.addEventListener('click', (e) => {
     projects.filter((project) => {
         if (placeTodo.value === project.title) {
             project.tasks.push(todo.createTodo())
+            // try placing render() in here?
         }
 
-        render(project.id, todo.placeTodo);
+        // render(project.id, todo.placeTodo);
         // inboxTitle.textContent = project.title;
     });
     saveToLocalStorage('projects', projects);
