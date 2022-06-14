@@ -85,7 +85,4 @@ export function render(projectId, todoPlace) {
             todosContainer.appendChild(generateTodoDOM(task))
         });
     }
-
-    console.log(incompleteTodos);
-
 }

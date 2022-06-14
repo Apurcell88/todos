@@ -1,4 +1,4 @@
-import { deleteTodo, getSavedStorage } from './inbox.js';
+import { deleteTodo, placeTodo, getSavedStorage } from './inbox.js';
 import { projects, projectInput } from './addProject.js';
 import { incompleteTodos, pushTodos, render } from './addProjectDOM.js';
 
@@ -37,14 +37,17 @@ export function generateTodoDOM(todo) {
     markComplete.classList.add('mark-complete');
     individualTodoContainer.appendChild(markComplete);
     markComplete.checked = todo.completed;
-    markComplete.addEventListener('change', (e) => {
+    markComplete.addEventListener('change', (e) => { // something going on here 6/14/22
         pushTodos(projects);
 
         projects.filter((project) => {
+            console.log(project.id, todo.placeTodo);
             deleteTodo(todo.id, project.id); // this works. It deletes the correct todo.
             saveToLocalStorage('projects', projects);
-            // location.reload(); // refreshes the web page
-            render(project.id, todo.placeTodo); // this will load the page with the correct todos
+            if (project.title === todo.placeTodo) {
+                render(project.id, todo.placeTodo);
+            }
+            
         });
     });
 
