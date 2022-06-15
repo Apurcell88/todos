@@ -34,7 +34,7 @@ addTodoBtn.addEventListener('click', (e) => {
     placeTodo.value = '';
     title.value = '';
     priority.value = '';
-    // date.value = '';
+    date.value = '';
 });
 
 cancelTodoBtn.addEventListener('click', () => {

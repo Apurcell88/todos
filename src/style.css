@@ -1,7 +1,6 @@
 :root {
     --white: white;
     --purple: rgb(166, 86, 232);
-    --green: rgb(70, 110, 70);
 }
 
 * {
@@ -98,7 +97,7 @@ svg {
 
 .add-popup {
     width: 100vw;
-    height: 20vh;
+    height: 30vh;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -115,6 +114,18 @@ svg {
 
 #add-task-btn svg {
     color: var(--purple);
+}
+
+#project-input {
+    width: 80%;
+    height: 20%;
+    border: none;
+    border-radius: 5px;
+    background-color: #212529;
+    color: var(--white);
+    text-align: center;
+    margin-top: 1rem;
+    outline: none;
 }
 
 .input-style {

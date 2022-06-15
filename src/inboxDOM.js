@@ -14,7 +14,7 @@ export function generateTodoDOM(todo) {
     const todoEl = document.createElement('span');
     const markComplete = document.createElement('input');
     const completedText = document.createElement('span');
-    // const dateDue = document.createElement('p');
+    const dateDue = document.createElement('p');
 
     todoEl.textContent = `${todo.title} Priority: ${todo.priority}`; 
     todoEl.classList.add('todo-el');
@@ -37,7 +37,7 @@ export function generateTodoDOM(todo) {
     markComplete.classList.add('mark-complete');
     individualTodoContainer.appendChild(markComplete);
     markComplete.checked = todo.completed;
-    markComplete.addEventListener('change', (e) => { // something going on here 6/14/22
+    markComplete.addEventListener('change', (e) => {
         pushTodos(projects);
 
         projects.filter((project) => {
@@ -51,9 +51,9 @@ export function generateTodoDOM(todo) {
         });
     });
 
-    // dateDue.textContent = `Due by ${todo.date}`
-    // individualTodoContainer.appendChild(dateDue);
-    // dateDue.classList.add('todo-el');
+    dateDue.textContent = `Due by ${todo.date}`
+    individualTodoContainer.appendChild(dateDue);
+    dateDue.classList.add('todo-el');
 
     return individualTodoContainer;
 }

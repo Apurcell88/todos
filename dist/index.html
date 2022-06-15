@@ -58,7 +58,7 @@
               </div>
               <div id="add-project-section">
                 <div class="hide-display add-popup" data-add-project-popup>
-                  <input class="input-style" data-input-project-title type="text" placeholder="Project to add">
+                  <input id="project-input" class="input-style" data-input-project-title type="text" placeholder="Project to add">
                   <div class="add-cancel-container">
                     <button class="add-cancel-btn add-btn" data-add-project-btn>Add</button>
                     <button class="add-cancel-btn cancel-btn" data-cancel-project-btn>Cancel</button>
@@ -79,9 +79,8 @@
               <input class="input-style" type="text" placeholder="Project to place todo in" data-place-todo required>
               <input class="input-style" id="todo-to-add-text" type="text" placeholder="Todo to add" required>  
               <input data-priority class="input-style" type="text" placeholder="Priority">
-              <!-- <input type="date" class="input-style" data-date> -->
+              <input type="date" class="input-style" data-date>
               <div class="add-cancel-container">
-                <!--This needs to be dynamic in JS instead of hard coded in HTML-->
                 <button data-add-todo-btn class="add-cancel-btn add-btn">Add</button> 
                 <button data-cancel-todo-btn class="add-cancel-btn cancel-btn">Cancel</button>
               </div>

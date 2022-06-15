@@ -14,7 +14,6 @@ export function generateProjectDOM(project) {
     projectEl.textContent = project.title;
     individualProjectContainer.appendChild(projectEl);
     projectEl.classList.add('enter-project-button');
-    // below is more than likely wrong, but we can at least see some functionality
     projectEl.addEventListener('click', (e) => {
         // saveToLocalStorage('projects', projects); // just added
         todosContainer.textContent = '';
@@ -61,7 +60,6 @@ export function pushTodos(projects) {
     for (let i = 0; i <= projects.length - 1; i++) {
         projects[i].tasks.forEach((task) => {
             if (incompleteTodos.includes(task)) {
-                // console.log('task already in array')
                 return null;
             }
              else {

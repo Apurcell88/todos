@@ -58,7 +58,7 @@ export function Todos() {
                 priority: priority.value.toLowerCase(),
                 id: uuidv4(),
                 completed: false,
-                // date: date.value,
+                date: date.value,
             };
         },
     }
