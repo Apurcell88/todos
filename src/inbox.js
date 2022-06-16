@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { format, compareAsc } from 'date-fns';
 import { projects } from './addProject';
 import { incompleteTodos } from './addProjectDOM';
 
@@ -50,6 +51,7 @@ export function toggleInboxPopup(element, btn) {
 
 // Factory function in charge of inbox todos including creation
 export function Todos() {
+    console.log(date.value);
     return {
         createTodo() {
             return {
@@ -58,7 +60,7 @@ export function Todos() {
                 priority: priority.value.toLowerCase(),
                 id: uuidv4(),
                 completed: false,
-                date: date.value,
+                date: format(new Date(date.value.replace(/-/g, '/')), `MMM do y`,),
             };
         },
     }
