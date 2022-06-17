@@ -182,10 +182,7 @@ svg {
 }
 
 /* -------------------------- JS DUE DATE STYLING ------------------------------- */
-.due-date {
-    color: var(--purple);
-    /* width: 8rem; */
-}
+
 
 /* -------------------------- STYLING GENERATED TODOS FROM JS ------------------------- */
 .todo-el {

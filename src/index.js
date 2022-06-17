@@ -15,20 +15,19 @@ addTaskBtn.addEventListener('click', (e) => {
 });
 
 addTodoBtn.addEventListener('click', (e) => {
-    // todosContainer.textContent = '';
     const todo = Todos();
-    toggleInboxPopup('[data-task-popup]', addTaskBtn);
 
+    toggleInboxPopup('[data-task-popup]', addTaskBtn);
     pushTodos(projects);
 
     projects.filter((project) => {
         if (placeTodo.value === project.title) {
             project.tasks.push(todo.createTodo())
             render(project.id, placeTodo.value);
+            inboxTitle.textContent = project.title;
         }
-
-        // inboxTitle.textContent = project.title;
     });
+
     saveToLocalStorage('projects', projects);
     
     placeTodo.value = '';
