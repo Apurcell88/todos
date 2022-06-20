@@ -2,7 +2,7 @@ import { deleteItem, deleteTodo, Todos } from "./inbox";
 import { projects } from "./addProject";
 import { saveToLocalStorage, inboxTitle, todosContainer, generateTodoDOM } from "./inboxDOM";
 
-export let incompleteTodos = []; // now a global variable.
+export let incompleteTodos = [];
 
 export function generateProjectDOM(project) {
     const individualProjectContainer = document.createElement('div');
@@ -15,7 +15,6 @@ export function generateProjectDOM(project) {
     individualProjectContainer.appendChild(projectEl);
     projectEl.classList.add('enter-project-button');
     projectEl.addEventListener('click', (e) => {
-        // saveToLocalStorage('projects', projects); // just added
         todosContainer.textContent = '';
         pushTodos(projects);
         inboxTitle.textContent = e.srcElement.textContent;
@@ -65,14 +64,13 @@ export function pushTodos(projects) {
              else {
                 incompleteTodos.push(task);
             }
-             
         });
     }
 }
 
 export function render(projectId, todoPlace) {
     todosContainer.innerHTML = '';
-    // need to match the placeTodo with the project title. If there is a match then display the project's tasks. Don't want to loop, want to specifically target with the params
+    
     const projectIndex = projects.findIndex((project) => {
         return project.id === projectId // gives a specific project
     });

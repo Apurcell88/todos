@@ -181,9 +181,6 @@ svg {
     /* flex-wrap: wrap; */
 }
 
-/* -------------------------- JS DUE DATE STYLING ------------------------------- */
-
-
 /* -------------------------- STYLING GENERATED TODOS FROM JS ------------------------- */
 .todo-el {
     margin-right: 0.5rem;
@@ -232,4 +229,27 @@ svg {
 
 .enter-project-button {
     border: none;
+}
+
+/* --------------- MEDIA QUERIES ----------- */
+@media screen and (min-width: 576px) {
+    #content {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+    }
+
+    nav {
+        width: 25vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #inbox-section {
+        width: 75vw;
+    }
+
+    .container-fluid {
+        background-color: red;
+    }
 }

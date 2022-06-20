@@ -51,7 +51,6 @@ export function toggleInboxPopup(element, btn) {
 
 // Factory function in charge of inbox todos including creation
 export function Todos() {
-    console.log(date.value);
     return {
         createTodo() {
             return {
