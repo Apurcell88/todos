@@ -232,24 +232,12 @@ svg {
 }
 
 /* --------------- MEDIA QUERIES ----------- */
-@media screen and (min-width: 576px) {
+/* @media screen and (min-width: 700px) {
     #content {
-        display: flex;
-        width: 100vw;
-        height: 100vh;
-    }
-
-    nav {
-        width: 25vw;
+        this are from the default media query
+        
         display: flex;
         flex-direction: column;
+        justify-content: flex-start;
     }
-
-    #inbox-section {
-        width: 75vw;
-    }
-
-    .container-fluid {
-        background-color: red;
-    }
-}
+} */
