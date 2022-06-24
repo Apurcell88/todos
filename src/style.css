@@ -42,7 +42,7 @@ button {
 /* -------------------------- NAV ------------------------------ */
 
 #content {
-    width: 100vw;
+    max-width: 100vw;
     height: 100vh;
     margin: 0 auto;
     display: flex;
@@ -229,31 +229,34 @@ svg {
 }
 
 /* --------------- MEDIA QUERIES ----------- */
-/* 6/23/22 - Look up position property and float to position the text */
 
 @media screen and (min-width: 700px) {
+/* --------------- NAV SECTION ----------- */
     #content {
         flex-direction: row;
     }
 
     #title-text {
         font-size: 2.5rem;
-        position: relative;
-        bottom: 28rem;
-        left: 1rem;
-    }
-
-    .container-fluid {
-        height: 100vh;
-        position: absolute;
     }
 
     .navbar {
         width: 40vw;
     }
 
-    #navbarNav {
+    .container-fluid {
+        border-right: 2px solid seagreen;
         height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #navbarNav {
+        width: 80%;
+        display: flex;
+        align-items: flex-start;
+        margin-right: 5rem;
+        margin-top: 1rem;
     }
 
     .navbar-nav {
@@ -261,15 +264,13 @@ svg {
         flex-direction: column;
         flex-wrap: wrap;
         justify-content: flex-start;
-        position: relative;
-        right: 13rem;
-        bottom: 14.5rem;
     }
 
+    /* --------------- INBOX SECTION ----------- */
+    
     #inbox-section {
         width: 60vw;
         border-left: 1px solid white;
-        margin-left: 2rem;
         background-color: rgba(166, 86, 232, 0.3);
     }
 
@@ -282,5 +283,98 @@ svg {
 
     svg {
         margin-right: 0.3rem;
+    }
+
+    /* INBOX DEFAULTS */
+    .inbox {
+        margin-left: 2.5rem;
+        margin-top: 1.5rem;
+        font-size: 2rem;
+    }
+    
+    .add-popup {
+        width: 100vw;
+        height: 30vh;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0 auto;
+        /* border: 2px white solid; */
+    }
+    
+    #add-task-btn {
+        border: none;
+        margin-left: 2.7rem;
+        margin-top: 0.8rem;
+        color: var(--white);
+    }
+    
+    #add-task-btn svg {
+        color: var(--purple);
+    }
+    
+    #project-input {
+        width: 80%;
+        height: 20%;
+        border: none;
+        border-radius: 5px;
+        background-color: #212529;
+        color: var(--white);
+        text-align: center;
+        margin-top: 1rem;
+        outline: none;
+    }
+    
+    .input-style {
+        width: 80%;
+        height: 40%;
+        border: none;
+        border-radius: 5px;
+        background-color: #212529;
+        color: var(--white);
+        text-align: center;
+        margin-top: 1rem;
+        outline: none;
+    }
+    
+    .add-cancel-container {
+        width: 80%;
+        height: 20vh;
+        display: flex;
+        justify-content: space-between;
+        align-items:flex-start;
+    }
+    
+    .add-cancel-btn {
+        width: 8.5rem;
+        height: 2.5rem;
+        border-radius: 5px;
+        margin-top: 1rem;
+        border: none;
+        color: var(--white);
+    }
+    
+    .add-btn {
+        background: rgba(166, 86, 232, 0.3);
+        transition: 0.3s;
+    }
+    
+    .add-btn:hover {
+        background: var(--purple);
+    }
+    
+    .cancel-btn {
+        background: rgba(232, 86, 130, 0.3);
+        transition: 0.3s;
+    }
+    
+    .cancel-btn:hover {
+        background: rgb(232, 86, 130);
+    }
+    
+    #todos-display-container {
+        display: flex;
+        flex-direction: column;
+        /* flex-wrap: wrap; */
     }
 }
