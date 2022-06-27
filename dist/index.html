@@ -50,14 +50,14 @@
                   <h2>Projects</h2>
                   <div data-projects-container></div>
                   <li class="nav-item">
-                    <button data-add-project-nav-btn class="nav-link text-light"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <button data-add-project-nav-btn class="nav-link text-light" id="add-project-text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                       </svg>Add Project</button>
                   </li>
                 </ul>
               </div>
               <div id="add-project-section">
-                <div class="hide-display add-popup" data-add-project-popup>
+                <div class="hide-display add-popup" id="project-popup" data-add-project-popup>
                   <input id="project-input" class="input-style" data-input-project-title type="text" placeholder="Project to add">
                   <div class="add-cancel-container">
                     <button class="add-cancel-btn add-btn" data-add-project-btn>Add</button>

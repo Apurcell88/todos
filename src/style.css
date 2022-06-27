@@ -231,6 +231,7 @@ svg {
 /* --------------- MEDIA QUERIES ----------- */
 
 @media screen and (min-width: 700px) {
+    /* ipads and tablets */
 /* --------------- NAV SECTION ----------- */
     #content {
         flex-direction: row;
@@ -266,6 +267,18 @@ svg {
         justify-content: flex-start;
     }
 
+    #add-project-section {
+        height: 60vh;
+        width: 40vw;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    #project-popup {
+        width: 40vw;
+    }
+
+
     /* --------------- INBOX SECTION ----------- */
     
     #inbox-section {
@@ -285,96 +298,82 @@ svg {
         margin-right: 0.3rem;
     }
 
-    /* INBOX DEFAULTS */
-    .inbox {
-        margin-left: 2.5rem;
-        margin-top: 1.5rem;
-        font-size: 2rem;
-    }
-    
     .add-popup {
-        width: 100vw;
+        width: 60vw;
         height: 30vh;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
         margin: 0 auto;
-        /* border: 2px white solid; */
     }
-    
-    #add-task-btn {
-        border: none;
-        margin-left: 2.7rem;
-        margin-top: 0.8rem;
-        color: var(--white);
+}
+
+@media screen and (min-width: 769px) {
+    /* small screens like laptops */
+    /* --------------- NAV SECTION ----------- */
+    span {
+        font-size: 1.4rem;
     }
-    
-    #add-task-btn svg {
-        color: var(--purple);
+
+    h2 {
+        font-size: 2.2rem;
     }
-    
-    #project-input {
-        width: 80%;
-        height: 20%;
-        border: none;
-        border-radius: 5px;
-        background-color: #212529;
-        color: var(--white);
-        text-align: center;
+
+    #title-text {
+        font-size: 3rem;
+    }
+
+    .projects {
+        font-size: 1.4rem;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+    }
+
+    #add-project-section {
+        height: 65vh;
+    }
+
+    #add-project-text {
         margin-top: 1rem;
-        outline: none;
     }
-    
-    .input-style {
-        width: 80%;
-        height: 40%;
-        border: none;
-        border-radius: 5px;
-        background-color: #212529;
-        color: var(--white);
-        text-align: center;
-        margin-top: 1rem;
-        outline: none;
+
+    /* --------------- INBOX SECTION ----------- */
+    .todo-el {
+        font-size: 1.4rem;
     }
-    
-    .add-cancel-container {
-        width: 80%;
-        height: 20vh;
-        display: flex;
-        justify-content: space-between;
-        align-items:flex-start;
+}
+
+@media screen and (min-width: 1023px) {
+    .navbar {
+        width: 30vw;
     }
-    
-    .add-cancel-btn {
-        width: 8.5rem;
-        height: 2.5rem;
-        border-radius: 5px;
-        margin-top: 1rem;
-        border: none;
-        color: var(--white);
+
+    #add-project-section {
+        width: 30vw
     }
-    
-    .add-btn {
-        background: rgba(166, 86, 232, 0.3);
-        transition: 0.3s;
+
+    #project-popup {
+        width: 30vw;
     }
-    
-    .add-btn:hover {
-        background: var(--purple);
+
+    #inbox-section {
+        width: 70vw
     }
-    
-    .cancel-btn {
-        background: rgba(232, 86, 130, 0.3);
-        transition: 0.3s;
+}
+
+@media screen and (min-width: 1023px) {
+    .navbar {
+        width: 28vw;
     }
-    
-    .cancel-btn:hover {
-        background: rgb(232, 86, 130);
+
+    #add-project-section {
+        width: 28vw
     }
-    
-    #todos-display-container {
-        display: flex;
-        flex-direction: column;
-        /* flex-wrap: wrap; */
+
+    #project-popup {
+        width: 28vw;
+    }
+
+    #inbox-section {
+        width: 72vw
     }
 }
